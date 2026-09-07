@@ -20,7 +20,6 @@ button{padding:7px 10px;border:0;border-radius:7px;margin-top:7px}
 <div id="map"></div>
 <div class="panel">
 <h3>Laguna di Venezia</h3>
-<div>V3 — dati del Geoportale del Comune</div>
 <button onclick="locate()">◎ La mia posizione</button>
 <span id="status">Caricamento carta GIS…</span>
 </div>
@@ -60,12 +59,12 @@ function locate(){
  if(!navigator.geolocation){status.textContent="Geolocalizzazione non supportata.";return;}
  status.textContent="Ricerca posizione GPS…";
  navigator.geolocation.getCurrentPosition(p=>{
+   map.setView(ll,15);
    const ll=[p.coords.latitude,p.coords.longitude], a=p.coords.accuracy||0;
    if(!marker) marker=L.circleMarker(ll,{radius:8,weight:3,fillOpacity:1}).addTo(map);
    else marker.setLatLng(ll);
    if(!accuracy) accuracy=L.circle(ll,{radius:a,weight:1,fillOpacity:.08}).addTo(map);
    else accuracy.setLatLng(ll).setRadius(a);
-   map.setView(ll,15);
    status.textContent="Posizione: "+ll[0].toFixed(6)+", "+ll[1].toFixed(6)+" — ±"+Math.round(a)+" m";
  },e=>status.textContent="GPS: "+e.message,{enableHighAccuracy:true,timeout:15000,maximumAge:5000});
 }
