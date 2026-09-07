@@ -49,6 +49,7 @@ laguna.on("requesterror",e=>{
  console.error(e);
  status.textContent="Carta GIS non raggiungibile dal browser. La mappa di base resta disponibile.";
 });
+ locate()
 
 let marker=null,accuracy=null;
 function locate(){
