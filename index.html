@@ -45,7 +45,7 @@ const laguna=L.esri.dynamicMapLayer({
 }).addTo(map);
 
 laguna.on("load",()=>status.textContent="Carta GIS caricata: canali, briccole, batimetria e limiti.");
-laguna.on("load",locate())
+<script>locate();</script>
 laguna.on("requesterror",e=>{
  console.error(e);
  status.textContent="Carta GIS non raggiungibile dal browser. La mappa di base resta disponibile.";
