@@ -45,13 +45,13 @@ const laguna=L.esri.dynamicMapLayer({
 }).addTo(map);
 
 laguna.on("load",()=>status.textContent="Carta GIS caricata: canali, briccole, batimetria e limiti.");
-<script>locate();</script>
 laguna.on("requesterror",e=>{
  console.error(e);
  status.textContent="Carta GIS non raggiungibile dal browser. La mappa di base resta disponibile.";
 });
 
 let marker=null,accuracy=null;
+<script>locate();</script>
 function locate(){
  if(!navigator.geolocation){status.textContent="Geolocalizzazione non supportata.";return;}
  status.textContent="Ricerca posizione GPS…";
