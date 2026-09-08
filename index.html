@@ -99,7 +99,7 @@ function locate() {
         const a = p.coords.accuracy || 0;
         
         // Sposta la mappa in modo fluido sulla nuova posizione (panTo è meglio di flyTo per il movimento continuo)
-        map.panTo(ll);
+        map.panTo(ll,15);
         
         // Crea o aggiorna il marker della posizione
         if (!marker) {
