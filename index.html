@@ -3,21 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Laguna di Venezia — V3</title>
+<title>Laguna di Venezia - AVT</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>
 html,body,#map{height:100%;margin:0}
 #map{min-height:100vh}
 h3{margin:0 0 8px;font-size:17px}
-button{padding:7px 10px;border:0;border-radius:7px;margin-top:7px}
+button{padding:7px 10px;border:0;border-radius:7px;margin-top:0px;background: rgba(255,255,255,1);}
 #status{display:block;margin-top:8px;color:#555;font-size:12px}
 </style>
 </head>
 <body>
 <div id="map"></div>
-<h3>Laguna di Venezia</h3>
-<div>Mappa AVT — Geoportale del Comune</div>
-<button onclick="locate()">◎ La mia posizione</button>
+<div style="position: absolute; top: 7px; left: 50px; z-index: 1000; background: rgba(255,255,255,1); padding: 0px; border-radius: 7px;">
+        <button onclick="locate()">◎ La mia posizione</button>
+    </div>
 <span id="status">Caricamento carta GIS…</span>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
