@@ -71,7 +71,8 @@ const batimetria=L.esri.dynamicMapLayer({url:gisUrl,opacity:.75,layers:[49]}).ad
 	//},{collapsed:false}).addTo(map);
 
 
-laguna.on("load",()=>status.textContent="Carta GIS caricata: canali, batimetria e limiti.");
+laguna.on("load",()=>{status.textContent="Carta GIS caricata: canali, batimetria e limiti.";
+					  locate()});
 laguna.on("requesterror",e=>{
  console.error(e);
  status.textContent="Carta GIS non raggiungibile dal browser. La mappa di base resta disponibile.";
@@ -79,7 +80,6 @@ laguna.on("requesterror",e=>{
 
 
 let marker=null,accuracy=null;
-locate();
 function locate(){
  if(!navigator.geolocation){status.textContent="Geolocalizzazione non supportata.";return;}
  status.textContent="Ricerca posizione GPS…";
