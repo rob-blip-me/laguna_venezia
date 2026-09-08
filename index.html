@@ -79,6 +79,7 @@ laguna.on("requesterror",e=>{
 
 
 let marker = null, accuracy = null, watchId = null;
+let followUser = true; // Flag per decidere se la mappa deve seguire il GPS
 
 function locate() {
     if (!navigator.geolocation) {
@@ -86,29 +87,35 @@ function locate() {
         return;
     }
     
-    status.textContent = "Avvio tracciamento GPS in tempo reale…";
+    // Quando l'utente preme il bottone, riattiva il tracciamento forzato e centra la mappa
+    followUser = true;
+    status.textContent = "Ricerca posizione GPS…";
     
-    // Se c'è già un watcher attivo, lo puliamo per evitare duplicati
     if (watchId !== null) {
         navigator.geolocation.clearWatch(watchId);
     }
     
-    // watchPosition continua a tracciare i movimenti
     watchId = navigator.geolocation.watchPosition(p => {
         const ll = [p.coords.latitude, p.coords.longitude];
         const a = p.coords.accuracy || 0;
         
-        // Sposta la mappa in modo fluido sulla nuova posizione (panTo è meglio di flyTo per il movimento continuo)
-        map.panTo(ll);
+        // Sposta la mappa SOLO se l'utente non ha spostato la visuale manualmente
+        if (followUser) {
+            map.panTo(ll);
+        }
         
-        // Crea o aggiorna il marker della posizione
+        // Gestione del marker e del cerchio di precisione
         if (!marker) {
             marker = L.circleMarker(ll, {radius: 8, weight: 3, fillOpacity: 1}).addTo(map);
+            
+            // Ascolta quando l'utente trascina la mappa con le dita/mouse
+            map.on('dragstart', function() {
+                followUser = false; // L'utente ha preso il controllo, smettiamo di seguire
+            });
         } else {
             marker.setLatLng(ll);
         }
         
-        // Crea o aggiorna il cerchio dell'accuratezza
         if (!accuracy) {
             accuracy = L.circle(ll, {radius: a, weight: 1, fillOpacity: .08}).addTo(map);
         } else {
@@ -122,7 +129,7 @@ function locate() {
     }, {
         enableHighAccuracy: true,
         timeout: 15000,
-        maximumAge: 0 // Chiediamo dati freschi a ogni aggiornamento
+        maximumAge: 0
     });
 }
 </script>
