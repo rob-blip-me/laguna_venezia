@@ -78,7 +78,7 @@ laguna.on("requesterror",e=>{
 });
 
 
-let marker = null, accuracy = null;
+let marker = null, accuracy = null, watchId = null;
 
 function locate() {
     if (!navigator.geolocation) {
@@ -86,28 +86,34 @@ function locate() {
         return;
     }
     
-    status.textContent = "Ricerca posizione GPS…";
+    status.textContent = "Avvio tracciamento GPS in tempo reale…";
     
-    navigator.geolocation.getCurrentPosition(p => {
+    // Se c'è già un watcher attivo, lo puliamo per evitare duplicati
+    if (watchId !== null) {
+        navigator.geolocation.clearWatch(watchId);
+    }
+    
+    // watchPosition continua a tracciare i movimenti
+    watchId = navigator.geolocation.watchPosition(p => {
         const ll = [p.coords.latitude, p.coords.longitude];
         const a = p.coords.accuracy || 0;
         
-        map.flyTo(ll, 15);
+        // Sposta la mappa in modo fluido sulla nuova posizione (panTo è meglio di flyTo per il movimento continuo)
+        map.panTo(ll);
         
-        // CORRETTO: Aggiunta la funzione di callback qui sotto
-        map.once('moveend', function() {
-            if (!marker) {
-                marker = L.circleMarker(ll, {radius: 8, weight: 3, fillOpacity: 1}).addTo(map);
-            } else {
-                marker.setLatLng(ll);
-            }
-            
-            if (!accuracy) {
-                accuracy = L.circle(ll, {radius: a, weight: 1, fillOpacity: .08}).addTo(map);
-            } else {
-                accuracy.setLatLng(ll).setRadius(a);
-            }
-        });
+        // Crea o aggiorna il marker della posizione
+        if (!marker) {
+            marker = L.circleMarker(ll, {radius: 8, weight: 3, fillOpacity: 1}).addTo(map);
+        } else {
+            marker.setLatLng(ll);
+        }
+        
+        // Crea o aggiorna il cerchio dell'accuratezza
+        if (!accuracy) {
+            accuracy = L.circle(ll, {radius: a, weight: 1, fillOpacity: .08}).addTo(map);
+        } else {
+            accuracy.setLatLng(ll).setRadius(a);
+        }
         
         status.textContent = "Posizione: " + ll[0].toFixed(6) + ", " + ll[1].toFixed(6) + " — ±" + Math.round(a) + " m";
         
@@ -116,7 +122,7 @@ function locate() {
     }, {
         enableHighAccuracy: true,
         timeout: 15000,
-        maximumAge: 5000
+        maximumAge: 0 // Chiediamo dati freschi a ogni aggiornamento
     });
 }
 </script>
