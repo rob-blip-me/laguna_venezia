@@ -15,7 +15,7 @@ button{padding:7px 10px;border:0;border-radius:7px;margin-top:0px;background: rg
 </head>
 <body>
 <div id="map"></div>
-<div style="position: absolute; top: 7px; left: 50px; z-index: 1000; background: rgba(255,255,255,1); padding: 0px; border-radius: 7px;">
+<div style="position: absolute; top: 12px; left: 50px; z-index: 1000; background: rgba(255,255,255,1); padding: 0px; border-radius: 7px;">
         <button onclick="locate()">◎ La mia posizione</button>
     </div>
 <span id="status">Caricamento carta GIS…</span>
@@ -24,7 +24,7 @@ button{padding:7px 10px;border:0;border-radius:7px;margin-top:0px;background: rg
 <script src="https://unpkg.com/esri-leaflet@3.0.16/dist/esri-leaflet.js"></script>
 <script>
 const status=document.getElementById("status");
-const map=L.map("map").setView([45.43,12.34],10);
+const map=L.map("map").setView([45.43,12.34],12);
 
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{
  maxZoom:19, attribution:"© OpenStreetMap contributors"
@@ -64,11 +64,12 @@ fetch(gisUrl+'/48/query?where=1%3D1&outFields=*&returnGeometry=true&outSR=4326&f
 const batimetria=L.esri.dynamicMapLayer({url:gisUrl,opacity:.75,layers:[49]}).addTo(map);
 
 // Controlli layer
-L.control.layers(null,{
-  'Briccole':briccole,
-  'Batimetria':batimetria,
-  'Carta GIS (canali/limiti)':laguna
-},{collapsed:false}).addTo(map);
+//L.control.layers(null,{
+//  'Briccole':briccole,
+//  'Batimetria':batimetria,
+//  'Carta GIS (canali/limiti)':laguna
+	//},{collapsed:false}).addTo(map);
+
 
 laguna.on("load",()=>status.textContent="Carta GIS caricata: canali, batimetria e limiti.");
 laguna.on("requesterror",e=>{
