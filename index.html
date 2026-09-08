@@ -24,7 +24,7 @@ button{padding:7px 10px;border:0;border-radius:7px;margin-top:0px;background: rg
 <script src="https://unpkg.com/esri-leaflet@3.0.16/dist/esri-leaflet.js"></script>
 <script>
 const status=document.getElementById("status");
-const map=L.map("map").setView([45.438535,12.356639],15);
+const map=L.map("map").setView([45.438535,12.356639],11);
 
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{
  maxZoom:19, attribution:"© OpenStreetMap contributors"
@@ -83,11 +83,11 @@ function locate(){
  status.textContent="Ricerca posizione GPS…";
  navigator.geolocation.getCurrentPosition(p=>{
    const ll=[p.coords.latitude,p.coords.longitude], a=p.coords.accuracy||0;
+   map.setView(ll,15);
    if(!marker) marker=L.circleMarker(ll,{radius:8,weight:3,fillOpacity:1}).addTo(map);
    else marker.setLatLng(ll);
    if(!accuracy) accuracy=L.circle(ll,{radius:a,weight:1,fillOpacity:.08}).addTo(map);
    else accuracy.setLatLng(ll).setRadius(a);
-   map.setView(ll,15);
    status.textContent="Posizione: "+ll[0].toFixed(6)+", "+ll[1].toFixed(6)+" — ±"+Math.round(a)+" m";
  },e=>status.textContent="GPS: "+e.message,{enableHighAccuracy:true,timeout:15000,maximumAge:5000});
 }
