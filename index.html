@@ -24,7 +24,7 @@ button{padding:7px 10px;border:0;border-radius:7px;margin-top:0px;background: rg
 <script src="https://unpkg.com/esri-leaflet@3.0.16/dist/esri-leaflet.js"></script>
 <script>
 const status=document.getElementById("status");
-const map=L.map("map").setView([45.438535,12.356639],15);
+const map=L.map("map").setView([45.43,12.34],11);
 
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{
  maxZoom:19, attribution:"© OpenStreetMap contributors"
@@ -71,8 +71,7 @@ const batimetria=L.esri.dynamicMapLayer({url:gisUrl,opacity:.75,layers:[49]}).ad
 	//},{collapsed:false}).addTo(map);
 
 
-laguna.on("load",()=>{status.textContent="Carta GIS caricata: canali, batimetria e limiti.";
-					  locate()});
+laguna.on("load",()=>{status.textContent="Carta GIS caricata: canali, batimetria e limiti.";});
 laguna.on("requesterror",e=>{
  console.error(e);
  status.textContent="Carta GIS non raggiungibile dal browser. La mappa di base resta disponibile.";
