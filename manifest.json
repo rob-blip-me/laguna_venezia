@@ -8,12 +8,12 @@
   "description": "Geolocalizzazione nella Laguna di Venezia.",
   "icons": [
     {
-      "src": "/images/fish192.png",
+      "src": "images/fish192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/images/fish512.png",
+      "src": "images/fish512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
