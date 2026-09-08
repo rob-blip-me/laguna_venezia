@@ -20,7 +20,7 @@ button{padding:7px 10px;border:0;border-radius:7px;margin-top:7px}
 <div id="map"></div>
 <div class="panel">
 <h3>Laguna di Venezia</h3>
-<div>V3 — dati del Geoportale del Comune</div> 
+<div>V3 — dati del Geoportale del Comune</div>
 <button onclick="locate()">◎ La mia posizione</button>
 <span id="status">Caricamento carta GIS…</span>
 </div>
@@ -46,10 +46,36 @@ const gisUrl="https://arcgis-prd.comune.venezia.it/server/rest/services/URBANIST
 const laguna=L.esri.dynamicMapLayer({
  url:gisUrl,
  opacity:0.75,
- layers:[28,48,49,51]
+ layers:[28,49,51]
 }).addTo(map);
 
-laguna.on("load",()=>status.textContent="Carta GIS caricata: canali, briccole, batimetria e limiti.");
+// Briccole: caricamento separato del layer 48
+const briccole=L.layerGroup().addTo(map);
+fetch(gisUrl+'/48/query?where=1%3D1&outFields=*&returnGeometry=true&outSR=4326&f=geojson')
+ .then(r=>{if(!r.ok) throw new Error('HTTP '+r.status); return r.json();})
+ .then(data=>{
+   if(!data.features || !data.features.length) throw new Error('nessun dato restituito');
+   L.geoJSON(data,{
+     pointToLayer:(f,ll)=>L.circleMarker(ll,{radius:6,weight:2,fillOpacity:.9}),
+     onEachFeature:(f,l)=>{
+       const p=f.properties||{};
+       const rows=Object.entries(p).filter(([k,v])=>v!==null&&v!=='').slice(0,8);
+       l.bindPopup('<b>Briccola</b><br>'+rows.map(([k,v])=>'<b>'+k+'</b>: '+v).join('<br>'));
+     }
+   }).addTo(briccole);
+ });
+
+// Batimetria: layer 49
+const batimetria=L.esri.dynamicMapLayer({url:gisUrl,opacity:.75,layers:[49]}).addTo(map);
+
+// Controlli layer
+L.control.layers(null,{
+  'Briccole':briccole,
+  'Batimetria':batimetria,
+  'Carta GIS (canali/limiti)':laguna
+},{collapsed:false}).addTo(map);
+
+laguna.on("load",()=>status.textContent="Carta GIS caricata: canali, batimetria e limiti.");
 laguna.on("requesterror",e=>{
  console.error(e);
  status.textContent="Carta GIS non raggiungibile dal browser. La mappa di base resta disponibile.";
