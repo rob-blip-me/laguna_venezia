@@ -70,12 +70,14 @@ const channelsLayer = L.geoJSON(null, {
 
 /* ---- */
 function esc(s){ return String(s).replace(/[&<>\"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\\':'&#92;','"':'&quot;'}[c])); }
-getText("channels.json");
+getText("channels.json","channels");
 
-async function getText(file) {
+async function getText(file, layername) {
   let x = await fetch(file);
   let y = await x.json();
-  channelsLayer.addData(y);
+  if layername=="channels" {
+     channelsLayer.addData(y);
+  }
 }
 
 // Briccole: caricamento separato del layer 48
