@@ -83,8 +83,8 @@ function selectPOI(value){
 
 let marker=null,accuracy=null,watchId=null;let followUser=true;
 function locate(){
- if(!navigator.geolocation){status.textContent="Geolocalizzazione non supportata.";return;}
- followUser=true;status.textContent="Ricerca posizione GPS…";
+ if(!navigator.geolocation){return;}<!-- {status.textContent="Geolocalizzazione non supportata.";return;}-->
+ followUser=true; <!-- status.textContent="Ricerca posizione GPS…"; -->
  if(watchId!==null)navigator.geolocation.clearWatch(watchId);
  watchId=navigator.geolocation.watchPosition(p=>{
   const ll=[p.coords.latitude,p.coords.longitude],a=p.coords.accuracy||0;
