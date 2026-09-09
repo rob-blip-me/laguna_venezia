@@ -75,7 +75,7 @@ getText("channels.json","channels");
 async function getText(file, layername) {
   let x = await fetch(file);
   let y = await x.json();
-  if layername=="channels" {
+  if (layername=="channels") {
      channelsLayer.addData(y);
   }
 }
