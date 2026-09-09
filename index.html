@@ -16,12 +16,15 @@ button{padding:7px 10px;border:0;border-radius:7px;background:rgba(255,255,255,1
 #poiMenu{position:absolute;top:60px;left:50px;z-index:1000;background:rgba(240,240,240,1);padding:8px;border-radius:7px;box-shadow:0 1px 5px rgba(0,0,0,.35);width:230px;max-width:calc(100vw - 100px)}
 #poiMenuTitle{font-family:Arial,sans-serif;font-size:14px;font-weight:normal;margin-bottom:5px}
 #poiMenu select{width:100%;font-size:14px;padding:6px;border:1px solid #bbb;border-radius:6px;background:rgba(240,240,240,1)}
-#status{display:block;position:absolute;bottom:8px;left:8px;z-index:1000;background:rgba(255,255,255,.9);padding:4px 7px;border-radius:5px;color:#555;font-size:12px}
+#status{display:block;margin-top:8px;color:#555;font-size:12px}
 </style>
 </head>
 <body>
 <div id="map"></div>
-<div id="gpsButton"><button onclick="locate()">📍 La mia posizione</button></div>
+<div style="position: absolute; top: 12px; left: 50px; z-index: 1000; background: rgba(255,255,255,1); padding: 0px; border-radius: 7px;">
+        <!-- <button onclick="locate()">◎ La mia posizione</button> -->
+		<gpsButton onclick="locate()">📍La mia posizione</gpsBbutton>
+    </div>
 <div id="poiMenu"><div id="poiMenuTitle">Punti di interesse
 </div><select id="poiSelect" onchange="selectPOI(this.value)"><option value="">— scegli un punto —</option></select></div>
 <span id="status">Caricamento carta GIS…</span>
