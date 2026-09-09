@@ -70,6 +70,7 @@ function toggleMenu(){
  menu.style.display=menu.style.display==="block"?"none":"block";
 }
 function selectPOI(value){
+ followUser=false;
  if(value===""){if(selectedPOIMarker){poiLayer.removeLayer(selectedPOIMarker);selectedPOIMarker=null;}return;}
  const poi=pointsOfInterest[Number(value)];if(!poi)return;
  if(selectedPOIMarker)poiLayer.removeLayer(selectedPOIMarker);
