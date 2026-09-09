@@ -11,20 +11,17 @@
 html,body,#map{height:100%;margin:0}
 #map{min-height:100vh}
 h3{margin:0 0 8px;font-size:17px}
-gpsbutton{padding:7px 10px;border:0;border-radius:7px;background:rgba(255,255,255,1);font-size:14px}
+button{padding:7px 10px;border:0;border-radius:7px;background:rgba(255,255,255,1);font-size:14px}
 #gpsButton{position:absolute;top:12px;left:50px;z-index:1000}
 #poiMenu{position:absolute;top:60px;left:50px;z-index:1000;background:rgba(240,240,240,1);padding:8px;border-radius:7px;box-shadow:0 1px 5px rgba(0,0,0,.35);width:230px;max-width:calc(100vw - 100px)}
 #poiMenuTitle{font-family:Arial,sans-serif;font-size:14px;font-weight:normal;margin-bottom:5px}
 #poiMenu select{width:100%;font-size:14px;padding:6px;border:1px solid #bbb;border-radius:6px;background:rgba(240,240,240,1)}
-#status{display:block;margin-top:8px;color:#555;font-size:12px}
+#status{display:block;position:absolute;bottom:8px;left:8px;z-index:1000;background:rgba(255,255,255,.9);padding:4px 7px;border-radius:5px;color:#555;font-size:12px}
 </style>
 </head>
 <body>
 <div id="map"></div>
-<div style="position: absolute; top: 12px; left: 50px; z-index: 1000; background: rgba(255,255,255,1); padding: 0px; border-radius: 7px;">
-        <!-- <button onclick="locate()">◎ La mia posizione</button> -->
-		<gpsButton onclick="locate()">📍La mia posizione</gpsBbutton>
-    </div>
+<div id="gpsButton"><button onclick="locate()">📍 La mia posizione</button></div>
 <div id="poiMenu"><div id="poiMenuTitle">Punti di interesse
 </div><select id="poiSelect" onchange="selectPOI(this.value)"><option value="">— scegli un punto —</option></select></div>
 <span id="status">Caricamento carta GIS…</span>
@@ -34,6 +31,64 @@ gpsbutton{padding:7px 10px;border:0;border-radius:7px;background:rgba(255,255,25
 const status=document.getElementById("status");
 const map=L.map("map").setView([45.43,12.34],12);
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"© OpenStreetMap contributors"}).addTo(map);
+const gisUrl="https://arcgis-prd.comune.venezia.it/server/rest/services/URBANISTICA/VPRG_Laguna_e_Isole_Minori_WGS84/MapServer";
+
+// Solo i layer GIS necessari: canali e limiti. Niente briccole o batimetria.
+const laguna=L.esri.dynamicMapLayer({url:gisUrl,opacity:0.75,layers:[28,51]}).addTo(map);
+
+const channelStyle={color:'#42a5f5',weight:1.5,opacity:0.5,fillColor:'#64b5f6',fillOpacity:0.25};
+const channelHighlight={color:'#64b5f6',weight:3,fillOpacity:0.1};
+const channelsLayer=L.geoJSON(null,{style:channelStyle,onEachFeature:(feature,layer)=>{
+ const p=feature.properties||{};
+ const speed=(p.speed===null||p.speed===undefined||p.speed==='')?'—':p.speed+' km/h';
+ layer.bindPopup('<b>'+esc(p.name||'Canale')+'</b><br>Velocità: '+esc(speed)+(p.use?'<br>Uso: '+esc(p.use):'')+(p.jurisdiction?'<br>Giurisdizione: '+esc(p.jurisdiction):''));
+ layer.on({mouseover:e=>e.target.setStyle(channelHighlight),mouseout:e=>channelsLayer.resetStyle(e.target)});
+}}).addTo(map);
+function esc(s){return String(s).replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\\':'&#92;','"':'&quot;'}[c]));}
+fetch("channels.json").then(r=>{if(!r.ok)throw new Error("HTTP "+r.status);return r.json();}).then(y=>{channelsLayer.addData(y);status.textContent="Carta caricata";}).catch(e=>{console.error(e);status.textContent="Errore nel caricamento dei canali";});
+laguna.on("load",()=>{status.textContent="Carta GIS caricata";});
+laguna.on("requesterror",e=>{console.error(e);status.textContent="Carta GIS non raggiungibile; mappa di base e canali restano disponibili.";});
+
+/* =========================================================
+   PUNTI DI INTERESSE
+   Modifica questo elenco. Puoi avere 20, 30 o più punti.
+   ========================================================= */45.328697669465534, 12.187758223465817
+const pointsOfInterest=[
+ {name:"Cason Montiron",lat:45.55355,lon:12.51,description:"Casone abbandonato Laguna Nord"}, 
+ {name:"Casone Millecampi",lat:45.2964,lon:12.19017,description:"Casone Laguna Sud"},
+ {name:"Isola Falconera",lat:45.488687,lon:12.543266,description:"Isola delle Litoranee AVT"},
+ {name:"Casone Valle Zappa",lat:45.328697,lon:12.187758,description:"Caratteristico Casone Laguna Sud"},
+ //{name:"Punto di interesse 5",lat:45.450000,lon:12.340000,description:"Descrizione"}
+];
+const poiSelect=document.getElementById("poiSelect");
+const poiLayer=L.layerGroup().addTo(map);
+let selectedPOIMarker=null;
+pointsOfInterest.forEach((poi,index)=>{const option=document.createElement("option");option.value=index;option.textContent=poi.name;poiSelect.appendChild(option);});
+function selectPOI(value){
+ if(value===""){if(selectedPOIMarker){poiLayer.removeLayer(selectedPOIMarker);selectedPOIMarker=null;}return;}
+ const poi=pointsOfInterest[Number(value)];if(!poi)return;
+ if(selectedPOIMarker)poiLayer.removeLayer(selectedPOIMarker);
+ selectedPOIMarker=L.marker([poi.lat,poi.lon]).addTo(poiLayer);
+ selectedPOIMarker.bindPopup('<b>'+esc(poi.name)+'</b>'+(poi.description?'<br>'+esc(poi.description):'')).openPopup();
+ map.panTo([poi.lat,poi.lon]);
+}
+
+let marker=null,accuracy=null,watchId=null;let followUser=true;
+function locate(){
+ if(!navigator.geolocation){status.textContent="Geolocalizzazione non supportata.";return;}
+ followUser=true;status.textContent="Ricerca posizione GPS…";
+ if(watchId!==null)navigator.geolocation.clearWatch(watchId);
+ watchId=navigator.geolocation.watchPosition(p=>{
+  const ll=[p.coords.latitude,p.coords.longitude],a=p.coords.accuracy||0;
+  if(followUser)map.panTo(ll);
+  if(!marker){marker=L.circleMarker(ll,{radius:8,weight:3,fillOpacity:1}).addTo(map);map.on('dragstart',function(){followUser=false;});}else marker.setLatLng(ll);
+  if(!accuracy)accuracy=L.circle(ll,{radius:a,weight:1,fillOpacity:.08}).addTo(map);else accuracy.setLatLng(ll).setRadius(a);
+  status.textContent="Posizione: "+ll[0].toFixed(6)+", "+ll[1].toFixed(6)+" — ±"+Math.round(a)+" m";
+ },e=>{status.textContent="GPS: "+e.message;},{enableHighAccuracy:true,timeout:15000,maximumAge:0});
+}
+</script>
+</body>
+</html>
 const gisUrl="https://arcgis-prd.comune.venezia.it/server/rest/services/URBANISTICA/VPRG_Laguna_e_Isole_Minori_WGS84/MapServer";
 
 // Solo i layer GIS necessari: canali e limiti. Niente briccole o batimetria.
