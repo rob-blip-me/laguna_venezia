@@ -49,10 +49,10 @@ const laguna=L.esri.dynamicMapLayer({
 
 /* ---- */
 const channelStyle = {
-  color:'#42a5f5', weight:1.5, opacity:1,
+  color:'#42a5f5', weight:1.5, opacity:0.7,
   fillColor:'#64b5f6', fillOpacity:0.25
 };
-const channelHighlight = {color:'#64b5f6', weight:3, fillOpacity:0.15};
+const channelHighlight = {color:'#64b5f6', weight:3, fillOpacity:0.1};
 const channelsLayer = L.geoJSON(null, {
   style: channelStyle,
   onEachFeature: (feature, layer) => {
