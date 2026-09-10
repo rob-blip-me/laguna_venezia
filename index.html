@@ -46,7 +46,7 @@ button{padding:7px 10px;border:0;border-radius:7px;background:rgba(255,255,255,1
 <div id="poiMenu">
 <div id="poiMenuTitle">Punti di interesse</div>
 <div id="poiList">
-<button class="poiItem" onclick="selectPOI("")">— scegli un punto —</button>
+<button class="poiItem" onclick="selectPOI("")">— Calcella —</button>
 </div>
 </div>
 
@@ -231,6 +231,13 @@ function selectPOI(value){
  followUser=false;
 
  if(value===""){
+  if(selectedPOIMarker){
+   poiLayer.removeLayer(selectedPOIMarker);
+   selectedPOIMarker=null;
+  }
+  return;
+ }
+ if(value==="— Calcella —"){
   if(selectedPOIMarker){
    poiLayer.removeLayer(selectedPOIMarker);
    selectedPOIMarker=null;
