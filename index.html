@@ -237,13 +237,6 @@ function selectPOI(value){
   }
   return;
  }
- if(value==="— Calcella —"){
-  if(selectedPOIMarker){
-   poiLayer.removeLayer(selectedPOIMarker);
-   selectedPOIMarker=null;
-  }
-  return;
- }
 
  const poi=pointsOfInterest[Number(value)];
  if(!poi)return;
