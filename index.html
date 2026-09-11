@@ -43,6 +43,11 @@ button{padding:7px 10px;border:0;border-radius:7px;background:rgba(255,255,255,1
  text-align:center;
  pointer-events:none;
 }
+ .menu-icon {
+  width: 24px;
+  height: 24px;
+  fill: rgba(255,255,255,1); /* Inherits the text color of the parent element */
+}
 </style>
 </head>
 <body>
@@ -53,8 +58,10 @@ button{padding:7px 10px;border:0;border-radius:7px;background:rgba(255,255,255,1
 <button onclick="locate()">📍 La mia posizione</button>
 </div>
 
-<button id="menuButton" onclick="toggleMenu()">☰</button>
-
+<!-- <button id="menuButton" onclick="toggleMenu()">☰</button> -->
+<!-- <button id="menuButton" onclick="toggleMenu()">  <svg viewBox="0 0 24 24" class="menu-icon">
+    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+  </svg></button> -->
 <div id="poiMenu">
 <div id="poiMenuTitle">Punti di interesse</div>
 <div id="poiList"></div>
