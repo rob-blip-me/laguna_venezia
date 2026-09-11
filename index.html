@@ -52,7 +52,8 @@ button{padding:7px 10px;border:0;border-radius:7px;background:rgba(255,255,255,1
 .poiItem{display:block;width:100%;box-sizing:border-box;padding:8px 7px;border:0;border-bottom:1px solid #ddd;border-radius:0;background:transparent;font-size:14px;text-align:left;color:#222}
 .poiItem:last-child{border-bottom:0}
 .poiItem:active{background:#ddd}
-#bathymetryLegend{position:absolute;bottom:18px;left:10px;z-index:1000;background:rgba(255,255,255,.88);padding:5px 7px;border-radius:6px;font:11px Arial,sans-serif;color:#333;box-shadow:0 1px 4px rgba(0,0,0,.25)}
+<!--
+  #bathymetryLegend{position:absolute;bottom:18px;left:10px;z-index:1000;background:rgba(255,255,255,.88);padding:5px 7px;border-radius:6px;font:11px Arial,sans-serif;color:#333;box-shadow:0 1px 4px rgba(0,0,0,.25)}
 .bathymetry-label{
  background:transparent;
  border:0;
@@ -63,6 +64,7 @@ button{padding:7px 10px;border:0;border-radius:7px;background:rgba(255,255,255,1
  text-align:center;
  pointer-events:none;
 }
+  -->
 .menu-icon {
   width: 24px;
   height: 24px;
@@ -88,8 +90,10 @@ button{padding:7px 10px;border:0;border-radius:7px;background:rgba(255,255,255,1
 <div id="poiList"></div>
 </div>
 
-<div id="bathymetryLegend">Profondità (m) — visibile da zoom 14<br>Briccole — visibili da zoom 14</div>
-
+<!--
+  <div id="bathymetryLegend">Profondità (m) — visibile da zoom 14<br>Briccole — visibili da zoom 14</div>
+-->
+  
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/esri-leaflet@3.0.16/dist/esri-leaflet.js"></script>
 <script>
