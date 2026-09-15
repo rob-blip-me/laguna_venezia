@@ -38,16 +38,21 @@ button{padding:7px 10px;border:0;border-radius:7px;background:rgba(255,255,255,1
 #poiMenuTitle{font-family:Arial,sans-serif;font-size:14px;font-weight:normal;margin-bottom:5px;display:flex;align-items:center;justify-content:space-between;gap:8px}
 #resetPOIButton{padding:4px 7px;border:1px solid #aaa;border-radius:5px;background:#fff;color:#333;font-size:12px;white-space:nowrap}
 #resetPOIButton:active{background:#ddd}
+#poiListContainer{
+ max-height:45vh;
+ overflow:hidden;
+ border:1px solid #bbb;
+ border-radius:6px;
+ background:rgba(240,240,240,1);
+}
+
 #poiList{
  max-height:45vh;
- overflow-y:scroll;
+ overflow-y:auto;
  overflow-x:hidden;
  overscroll-behavior:contain;
  -webkit-user-select:none;
  user-select:none;
- border:1px solid #bbb;
- border-radius:6px;
- background:rgba(240,240,240,1);
 }
 .poiItem{display:block;width:100%;box-sizing:border-box;padding:8px 7px;border:0;border-bottom:1px solid #ddd;border-radius:0;background:transparent;font-size:14px;text-align:left;color:#222}
 .poiItem:last-child{border-bottom:0}
@@ -90,7 +95,9 @@ button{padding:7px 10px;border:0;border-radius:7px;background:rgba(255,255,255,1
  <span>Punti di interesse</span>
  <button id="resetPOIButton" type="button" onclick="resetPOI()">Resetta</button>
 </div>
-<div id="poiList"></div>
+<div id="poiListContainer">
+    <div id="poiList"></div>
+</div>
 </div>
 
 <!--
