@@ -54,7 +54,29 @@ button{padding:7px 10px;border:0;border-radius:7px;background:rgba(255,255,255,1
  -webkit-user-select:none;
  user-select:none;
 }
-.poiItem{display:block;width:100%;box-sizing:border-box;padding:8px 7px;border:0;border-bottom:1px solid #ddd;border-radius:0;background:transparent;font-size:14px;text-align:left;color:#222}
+.poiItem{
+ display:block;
+ width:100%;
+ box-sizing:border-box;
+ padding:8px 7px;
+ margin:0;
+ border:0;
+ border-bottom:1px solid #ddd;
+ border-radius:0;
+ background:transparent;
+ font-family:Arial,sans-serif;
+ font-size:14px;
+ font-weight:normal;
+ text-align:left;
+ color:#222;
+ -webkit-appearance:none;
+ appearance:none;
+ -webkit-tap-highlight-color:transparent;
+}
+.poiItem:focus{
+ outline:none;
+ box-shadow:none;
+}
 .poiItem:last-child{border-bottom:0}
 .poiItem:active{background:#ddd}
 <!--
