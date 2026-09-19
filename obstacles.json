@@ -1,0 +1,10 @@
+{
+  "obstacles": [
+    {
+      "name": "Cavi sospesi",
+      "lat": 45.495049,
+      "lon": 12.395178,
+      "description": "Possibile presenza di cavi sospesi"
+    }
+  ]
+}
