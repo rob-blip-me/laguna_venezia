@@ -225,7 +225,8 @@ const obstacleIcon=L.divIcon({
 });
 
 // Ostacolo inserito direttamente nel codice: non dipende da obstacles.json.
-const obstacles=[{
+const obstacles=[
+ {
  name:"Cavi sospesi",
  lat:45.495049,
  lon:12.395178,
@@ -236,7 +237,8 @@ const obstacles=[{
  lat:45.49,
  lon:12.39,
  description:"Bilancia"
-}];
+}
+];
 
 
 function updateObstacles(){
