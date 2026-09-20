@@ -227,13 +227,13 @@ const obstacleIcon=L.divIcon({
 // Ostacolo inserito direttamente nel codice: non dipende da obstacles.json.
 const obstacles=[
  {name:"Attenzione: Cavo sospeso",
- lat:45.521730,
- lon:12.427863,
+ lat:45.495303,
+ lon:12.415752,
  description:"Possibile presenza di un cavo elettrico sospeso"
 },
 {name:"Attenzione: Bilancia",
- lat:45.526334,
- lon:12.425200,
+ lat:45.526074,
+ lon:12.427951,
  description:"Possibile presenza di una bilancia da pesca"
 }
 ];
