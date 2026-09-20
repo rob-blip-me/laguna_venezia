@@ -140,7 +140,7 @@ function updateBriccole(){
 
 map.on("zoomend moveend",updateBriccole);
 
-const gisUrl="https://arcgis-prd.comune.venezia.it/server/rest/services/URBANISTICA/VPRG_Laguna_e_Isole_Minori_WGS84/MapServer";
+//const gisUrl="https://arcgis-prd.comune.venezia.it/server/rest/services/URBANISTICA/VPRG_Laguna_e_Isole_Minori_WGS84/MapServer";
 
 // Solo i layer GIS necessari: canali e limiti. Niente briccole o batimetria.
 const laguna=L.esri.dynamicMapLayer({
