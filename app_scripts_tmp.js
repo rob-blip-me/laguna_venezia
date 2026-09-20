@@ -217,11 +217,11 @@ fetch("channels.json")
 
 const obstaclesLayer=L.layerGroup().addTo(map);
 
-const obstacleIcon=L.divIcon({
- className:"obstacle-x",
- html:"<span>✕</span>",
- iconSize:[36,36],
- iconAnchor:[18,18]
+const obstacleIcon = L.divIcon({
+  className: "obstacle-icon",
+  html: '<img src="att.png" alt="obstacle" style="width:100%; height:100%; display:block;" />',
+  iconSize: [36, 36],
+  iconAnchor: [18, 18]
 });
 
 // Ostacolo inserito direttamente nel codice: non dipende da obstacles.json.
