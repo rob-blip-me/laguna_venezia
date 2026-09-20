@@ -238,6 +238,10 @@ const obstacles=[
 }
 ];
 
+L.marker([45.4642, 9.1900], {
+  icon: obstacleIcon,
+  zIndexOffset: 10000
+}).addTo(map);
 
 function updateObstacles(){
 obstaclesLayer.clearLayers();
