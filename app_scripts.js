@@ -228,11 +228,11 @@ const obstacleIcon=L.divIcon({
 const obstacles=[
  {name:"Attenzione: Cavo sospeso",
  lat:45.521730,
- lon:12.425163,
+ lon:12.427863,
  description:"Possibile presenza di un cavo elettrico sospeso"
 },
 {name:"Attenzione: Bilancia",
- lat:45.521775,
+ lat:45.526334,
  lon:12.425206,
  description:"Possibile presenza di una bilancia da pesca"
 }
