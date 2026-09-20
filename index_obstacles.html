@@ -394,7 +394,7 @@ const obstacles=[{
 
 function updateObstacles(){
 obstaclesLayer.clearLayers();
-  if(map.getZoom()<=13.5) {
+if(map.getZoom()<=13.5) {
   return;
 }
 obstacles.forEach(obstacle=>{
@@ -415,6 +415,7 @@ obstacles.forEach(obstacle=>{
 
 console.log("Ostacoli caricati:",obstacles.length);
 }
+
 map.on("zoomend moveend",updateObstacles);
 /* =========================================================
    PUNTI DI INTERESSE
