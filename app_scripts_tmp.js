@@ -219,7 +219,7 @@ const obstaclesLayer=L.layerGroup().addTo(map);
 
 const obstacleIcon = L.divIcon({
   className: "obstacle-icon",
-  html: '<img src="att.png" alt="obstacle" style="width:100%; height:100%; display:block;" />',
+  html: '<img src="att.png" alt="obstacle" style="width:80%; height:80%; display:block;" />',
   iconSize: [36, 36],
   iconAnchor: [18, 18]
 });
