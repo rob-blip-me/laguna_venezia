@@ -366,7 +366,8 @@ fetch("channels.json")
    OSTACOLI: CAVI SOSPESI
    Gli ostacoli sono sempre visibili da zoom 14.
    ========================================================= */
-function updateObstacles(){
+
+
 const obstaclesLayer=L.layerGroup().addTo(map);
 
 const obstacleIcon=L.divIcon({
@@ -389,9 +390,10 @@ const obstacles=[{
  lon:12.39,
  description:"Bilancia"
 }];
-  
-obstaclesLayer.clearLayers();
 
+
+function updateObstacles(){
+obstaclesLayer.clearLayers();
   if(map.getZoom()<=13.5) {
   return;
 }
