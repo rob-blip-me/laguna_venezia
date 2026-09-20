@@ -367,7 +367,7 @@ fetch("channels.json")
    Carica obstacles.json e mostra una X rossa.
    Gli ostacoli sono sempre visibili.
    ========================================================= */
-
+function updateObstacles(){
 const obstaclesLayer=L.layerGroup().addTo(map);
 
 const obstacleIcon=L.divIcon({
@@ -391,7 +391,9 @@ const obstacles=[{
  description:"Bilancia"
 }];
 
-if(map.getZoom()>=14) {
+if(map.getZoom()<=13.5) {
+  return;
+}
 obstacles.forEach(obstacle=>{
  const marker=L.marker(
   [obstacle.lat,obstacle.lon],
@@ -406,10 +408,11 @@ obstacles.forEach(obstacle=>{
   '<b>'+esc(obstacle.name)+'</b>'+
   '<br>'+esc(obstacle.description)
  );
-})};
+});
 
 console.log("Ostacoli caricati:",obstacles.length);
-
+}
+map.on("zoomend moveend",updateObstacles);
 /* =========================================================
    PUNTI DI INTERESSE
    ========================================================= */
