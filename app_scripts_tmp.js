@@ -143,11 +143,11 @@ map.on("zoomend moveend",updateBriccole);
 //const gisUrl="https://arcgis-prd.comune.venezia.it/server/rest/services/URBANISTICA/VPRG_Laguna_e_Isole_Minori_WGS84/MapServer";
 
 // Solo i layer GIS necessari: canali e limiti. Niente briccole o batimetria.
-const laguna=L.esri.dynamicMapLayer({
- url:gisUrl,
- opacity:0.75,
- layers:[28,51]
-}).addTo(map);
+//const laguna=L.esri.dynamicMapLayer({
+ //url:gisUrl,
+ //opacity:0.75,
+ //layers:[28,51]
+//}).addTo(map);
 
 const channelStyle={
  color:'#42a5f5',
