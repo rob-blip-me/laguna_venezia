@@ -391,6 +391,7 @@ const obstacles=[{
  description:"Bilancia"
 }];
 
+if(map.getZoom()>=14) {
 obstacles.forEach(obstacle=>{
  const marker=L.marker(
   [obstacle.lat,obstacle.lon],
@@ -405,7 +406,7 @@ obstacles.forEach(obstacle=>{
   '<b>'+esc(obstacle.name)+'</b>'+
   '<br>'+esc(obstacle.description)
  );
-});
+})};
 
 console.log("Ostacoli caricati:",obstacles.length);
 
