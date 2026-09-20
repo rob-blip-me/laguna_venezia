@@ -233,7 +233,7 @@ const obstacles=[
 },
 {name:"Attenzione: Bilancia",
  lat:45.526334,
- lon:12.425207,
+ lon:12.425204,
  description:"Possibile presenza di una bilancia da pesca"
 }
 ];
