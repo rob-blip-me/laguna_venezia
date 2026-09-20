@@ -364,8 +364,7 @@ fetch("channels.json")
 
 /* =========================================================
    OSTACOLI: CAVI SOSPESI
-   Carica obstacles.json e mostra una X rossa.
-   Gli ostacoli sono sempre visibili.
+   Gli ostacoli sono sempre visibili da zoom 14.
    ========================================================= */
 function updateObstacles(){
 const obstaclesLayer=L.layerGroup().addTo(map);
@@ -384,14 +383,16 @@ const obstacles=[{
  lon:12.395178,
  description:"Possibile presenza di cavi sospesi"
 },
-                {
+{
  name:"Bilancia sospesa",
  lat:45.49,
  lon:12.39,
  description:"Bilancia"
 }];
+  
+obstaclesLayer.clearLayers();
 
-if(map.getZoom()<=13.5) {
+  if(map.getZoom()<=13.5) {
   return;
 }
 obstacles.forEach(obstacle=>{
