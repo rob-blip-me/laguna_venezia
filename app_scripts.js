@@ -272,6 +272,7 @@ const pointsOfInterest=[
  {name:"Cason Montiron",lat:45.55355,lon:12.51,description:"Casone abbandonato Laguna Nord"},
  {name:"Casone Millecampi",lat:45.2964,lon:12.19017,description:"Casone Laguna Sud"},
  {name:"Isola Falconera",lat:45.488687,lon:12.543266,description:"Isola delle Litoranee AVT"},
+ {name:"L'Isola che non c'è",lat:45.519225, lon:12.439425,description:"Casa costruita sopra una barca"}  
  {name:"Casone Valle Zappa",lat:45.328697,lon:12.187758,description:"Caratteristico Casone Laguna Sud"},
  {name:"Fisolo",lat:45.362849, lon:12.290609,description:"Isola Fisolo (nome locale dello Svasso, uccello lagunare), Laguna Sud"},
  {name:"Poveglia",lat:45.382275, lon:12.331252,description:"Isola di Poveglia, parco cittadino"},
@@ -283,6 +284,7 @@ const pointsOfInterest=[
 {name:"Agr. Le Saline",lat:45.491910, lon:12.480185,description:"Approdo dell'agriturismo Le Saline"},
 {name:"Agr. La Valli",lat:45.332188, lon:12.318347,description:"Approdo dell'agriturismo Le Valli"}  
 ];
+
 const poiLayer=L.layerGroup().addTo(map);
 let selectedPOIMarker=null;
 
