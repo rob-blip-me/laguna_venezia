@@ -238,11 +238,6 @@ const obstacles=[
 }
 ];
 
-L.marker([45.4642, 9.1900], {
-  icon: obstacleIcon,
-  zIndexOffset: 10000
-}).addTo(map);
-
 function updateObstacles(){
 obstaclesLayer.clearLayers();
 if(map.getZoom()<=13.5) {
@@ -267,7 +262,7 @@ obstacles.forEach(obstacle=>{
 console.log("Ostacoli caricati:",obstacles.length);
 }
 
-map.on("zoomend moveend",updateObstacles);
+map.on("zoomend",updateObstacles);
 /* =========================================================
    PUNTI DI INTERESSE
    ========================================================= */
