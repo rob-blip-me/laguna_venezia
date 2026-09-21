@@ -71,7 +71,7 @@ function updateBathymetryLabels(){
 }
 
 
-map.on("zoomend moveend",updateBathymetryLabels);
+map.on("zoomend",updateBathymetryLabels);
 
 /* =========================================================
    BRICCOLE
@@ -138,7 +138,7 @@ function updateBriccole(){
  });
 }
 
-map.on("zoomend moveend",updateBriccole);
+map.on("zoomend",updateBriccole);
 
 //const gisUrl="https://arcgis-prd.comune.venezia.it/server/rest/services/URBANISTICA/VPRG_Laguna_e_Isole_Minori_WGS84/MapServer";
 
