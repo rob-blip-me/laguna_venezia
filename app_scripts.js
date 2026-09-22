@@ -231,9 +231,9 @@ const obstacles=[
  lon:12.415752,
  description:"Possibile presenza di un cavo elettrico sospeso"
 },
-{name:"Attenzione: Bilancia",
- lat:45.526074,
- lon:12.427951,
+{name:"Attenzione: Bilancia da pesca",
+ lat:45.526506,
+ lon:12.428166,
  description:"Possibile presenza di una bilancia da pesca"
 }
 ];
