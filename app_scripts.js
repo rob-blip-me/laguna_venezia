@@ -286,6 +286,7 @@ const pointsOfInterest=[
  {name:"Campana",lat:45.383976, lon:12.285618,description:"Isola Campana, Laguna Sud"},
  {name:"San Marco in Boccalama",lat:45.388789, lon:12.282075,description:"San Marco in Boccalama, isola sommersa, custodisce i relitti di una galea e di una rascona sommerse"},
 {name:"Sant'Angelo della Polvere",lat:45.408729, lon:12.283761,description:"Sant'Angelo della Polvere, Laguna Sud"},
+ {name:"Spiaggia della Boschettona",lat:45.258511, lon:12.189722,description:"Nota località naturale e luogo famoso per il kitesurf"},
 {name:"Agr. La Barena",lat:45.503324, lon:12.538764,description:"Approdo dell'agriturismo La Barena"},
 {name:"Agr. Le Saline",lat:45.491910, lon:12.480185,description:"Approdo dell'agriturismo Le Saline"},
 {name:"Agr. La Valli",lat:45.332188, lon:12.318347,description:"Approdo dell'agriturismo Le Valli"}
