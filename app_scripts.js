@@ -236,7 +236,7 @@ const obstacles=[
  lon:12.428166,
  description:"Possibile presenza di bilance da pesca"
 },
- {name:"Attenzione: Bilancia da pesca",
+{name:"Attenzione: Bilancia da pesca",
  lat:45.508493,
  lon:12.378344,
  description:"Possibile presenza di bilance da pesca"
@@ -278,7 +278,7 @@ const pointsOfInterest=[
  {name:"Casone Millecampi",lat:45.2964,lon:12.19017,description:"Casone Laguna Sud"},
  {name:"Isola Falconera",lat:45.488687,lon:12.543266,description:"Isola delle Litoranee AVT"},
  {name:"L'Isola che non c'\u00e8",lat:45.517806, lon:12.439361,description:"Casone costruito sopra ad una barca"}, 
- {name:"Isola Buel del Lovo",lat:45.492505, lon:12.376452,description:"Isola Laguna Nord"}
+ {name:"Isola Buel del Lovo",lat:45.492505, lon:12.376452,description:"Isola Laguna Nord"},
  {name:"Casone Valle Zappa",lat:45.328697,lon:12.187758,description:"Caratteristico Casone Laguna Sud"},
  {name:"Fisolo",lat:45.362849, lon:12.290609,description:"Isola Fisolo (nome locale dello Svasso, uccello lagunare), Laguna Sud"},
  {name:"Poveglia",lat:45.382275, lon:12.331252,description:"Isola di Poveglia, parco cittadino"},
