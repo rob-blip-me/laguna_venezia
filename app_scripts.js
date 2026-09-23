@@ -234,7 +234,12 @@ const obstacles=[
 {name:"Attenzione: Bilancia da pesca",
  lat:45.526506,
  lon:12.428166,
- description:"Possibile presenza di una bilancia da pesca"
+ description:"Possibile presenza di bilance da pesca"
+},
+ {name:"Attenzione: Bilancia da pesca",
+ lat:45.508493,
+ lon:12.378344,
+ description:"Possibile presenza di bilance da pesca"
 }
 ];
 
@@ -273,6 +278,7 @@ const pointsOfInterest=[
  {name:"Casone Millecampi",lat:45.2964,lon:12.19017,description:"Casone Laguna Sud"},
  {name:"Isola Falconera",lat:45.488687,lon:12.543266,description:"Isola delle Litoranee AVT"},
  {name:"L'Isola che non c'\u00e8",lat:45.517806, lon:12.439361,description:"Casone costruito sopra ad una barca"}, 
+ {name:"Isola Buel del Lovo",lat:45.492505, lon:12.376452,description:"Isola Laguna Nord"}
  {name:"Casone Valle Zappa",lat:45.328697,lon:12.187758,description:"Caratteristico Casone Laguna Sud"},
  {name:"Fisolo",lat:45.362849, lon:12.290609,description:"Isola Fisolo (nome locale dello Svasso, uccello lagunare), Laguna Sud"},
  {name:"Poveglia",lat:45.382275, lon:12.331252,description:"Isola di Poveglia, parco cittadino"},
@@ -282,7 +288,7 @@ const pointsOfInterest=[
 {name:"Sant'Angelo della Polvere",lat:45.408729, lon:12.283761,description:"Sant'Angelo della Polvere, Laguna Sud"},
 {name:"Agr. La Barena",lat:45.503324, lon:12.538764,description:"Approdo dell'agriturismo La Barena"},
 {name:"Agr. Le Saline",lat:45.491910, lon:12.480185,description:"Approdo dell'agriturismo Le Saline"},
-{name:"Agr. La Valli",lat:45.332188, lon:12.318347,description:"Approdo dell'agriturismo Le Valli"}  
+{name:"Agr. La Valli",lat:45.332188, lon:12.318347,description:"Approdo dell'agriturismo Le Valli"}
 ];
 
 const poiLayer=L.layerGroup().addTo(map);
