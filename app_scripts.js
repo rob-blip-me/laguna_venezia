@@ -240,6 +240,21 @@ const obstacles=[
  lat:45.508493,
  lon:12.378344,
  description:"Possibile presenza di bilance da pesca"
+},
+{name:"Attenzione",
+ lat:45.305022,
+ lon:12.184546,
+ description:"Acque basse"
+},
+{name:"Attenzione",
+ lat:45.313858,
+ lon:12.176601,
+ description:"Acque basse"
+}, 
+{name:"Attenzione",
+ lat:45.328135,
+ lon:12.188822,
+ description:"Acque basse"
 }
 ];
 
