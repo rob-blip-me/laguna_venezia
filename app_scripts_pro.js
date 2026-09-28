@@ -384,7 +384,7 @@ const litoraneaLayer=L.layerGroup().addTo(map);
 
 const litoraneaIcon = L.divIcon({
   className: "litoranea-icon",
-  html: '<img src="litoranea.png" alt="litoranea" style="width:80%; height:80%; display:block;" />',
+  html: '<img src="litoranea.png" alt="litoranea" style="width:100%; height:100%; display:block;" />',
   iconSize: [36, 36],
   iconAnchor: [18, 18]
 });
