@@ -231,10 +231,30 @@ const obstacles=[
  lon:12.415752,
  description:"Possibile presenza di un cavo elettrico sospeso"
 },
-{name:"Attenzione: Bilancia",
- lat:45.526074,
- lon:12.427951,
- description:"Possibile presenza di una bilancia da pesca"
+{name:"Attenzione: Bilancia da pesca",
+ lat:45.526506,
+ lon:12.428166,
+ description:"Possibile presenza di bilance da pesca"
+},
+{name:"Attenzione: Bilancia da pesca",
+ lat:45.508493,
+ lon:12.378344,
+ description:"Possibile presenza di bilance da pesca"
+},
+{name:"Attenzione",
+ lat:45.305022,
+ lon:12.184546,
+ description:"Acque basse"
+},
+{name:"Attenzione",
+ lat:45.313858,
+ lon:12.176601,
+ description:"Acque basse"
+}, 
+{name:"Attenzione",
+ lat:45.328135,
+ lon:12.188822,
+ description:"Acque basse"
 }
 ];
 
@@ -272,6 +292,8 @@ const pointsOfInterest=[
  {name:"Cason Montiron",lat:45.55355,lon:12.51,description:"Casone abbandonato Laguna Nord"},
  {name:"Casone Millecampi",lat:45.2964,lon:12.19017,description:"Casone Laguna Sud"},
  {name:"Isola Falconera",lat:45.488687,lon:12.543266,description:"Isola delle Litoranee AVT"},
+ {name:"L'Isola che non c'\u00e8",lat:45.517806, lon:12.439361,description:"Casone costruito sopra ad una barca"}, 
+ {name:"Isola Buel del Lovo",lat:45.492505, lon:12.376452,description:"Isola Laguna Nord"},
  {name:"Casone Valle Zappa",lat:45.328697,lon:12.187758,description:"Caratteristico Casone Laguna Sud"},
  {name:"Fisolo",lat:45.362849, lon:12.290609,description:"Isola Fisolo (nome locale dello Svasso, uccello lagunare), Laguna Sud"},
  {name:"Poveglia",lat:45.382275, lon:12.331252,description:"Isola di Poveglia, parco cittadino"},
@@ -279,10 +301,12 @@ const pointsOfInterest=[
  {name:"Campana",lat:45.383976, lon:12.285618,description:"Isola Campana, Laguna Sud"},
  {name:"San Marco in Boccalama",lat:45.388789, lon:12.282075,description:"San Marco in Boccalama, isola sommersa, custodisce i relitti di una galea e di una rascona sommerse"},
 {name:"Sant'Angelo della Polvere",lat:45.408729, lon:12.283761,description:"Sant'Angelo della Polvere, Laguna Sud"},
+ {name:"Spiaggia della Boschettona",lat:45.258511, lon:12.189722,description:"Nota località naturale e luogo famoso per il kitesurf"},
 {name:"Agr. La Barena",lat:45.503324, lon:12.538764,description:"Approdo dell'agriturismo La Barena"},
 {name:"Agr. Le Saline",lat:45.491910, lon:12.480185,description:"Approdo dell'agriturismo Le Saline"},
-{name:"Agr. La Valli",lat:45.332188, lon:12.318347,description:"Approdo dell'agriturismo Le Valli"}  
+{name:"Agr. La Valli",lat:45.332188, lon:12.318347,description:"Approdo dell'agriturismo Le Valli"}
 ];
+
 const poiLayer=L.layerGroup().addTo(map);
 let selectedPOIMarker=null;
 
