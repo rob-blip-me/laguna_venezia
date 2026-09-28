@@ -340,8 +340,8 @@ const obstacles=[
  description:"Acque basse"
 }, 
 {name:"Attenzione",
- lat:45.328135,
- lon:12.188822,
+ lat:45.327860,
+ lon:12.187227,
  description:"Acque basse"
 }
 ];
