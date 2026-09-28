@@ -75,16 +75,20 @@ map.on("zoomend moveend",updateBathymetryLabels);
 
 /* =========================================================
    LONG PRESS: COORDINATE DEL PUNTO TOCCATO/CLICCATO
+   Versione robusta per Android/Chrome e desktop.
    Tenendo premuto per 3 secondi in un punto della mappa,
-   mostra latitudine e longitudine. Il popup ha il normale
-   pulsante X di Leaflet per chiuderlo.
+   mostra latitudine e longitudine.
    ========================================================= */
 
 let longPressTimer=null;
 let longPressStartLatLng=null;
-let longPressStartPoint=null;
+let longPressStartX=0;
+let longPressStartY=0;
+let longPressActive=false;
+let longPressTriggered=false;
+
 const LONG_PRESS_TIME=3000;
-const LONG_PRESS_MOVE_TOLERANCE=12;
+const LONG_PRESS_MOVE_TOLERANCE=25;
 
 function cancelLongPress(){
  if(longPressTimer!==null){
@@ -92,20 +96,35 @@ function cancelLongPress(){
   longPressTimer=null;
  }
  longPressStartLatLng=null;
- longPressStartPoint=null;
+ longPressActive=false;
+}
+
+function getContainerPoint(e){
+ const rect=map.getContainer().getBoundingClientRect();
+ return L.point(e.clientX-rect.left,e.clientY-rect.top);
 }
 
 function startLongPress(e){
- cancelLongPress();
+ // Considera solo il pulsante sinistro del mouse; per il touch
+ // pointerType è "touch".
+ if(e.pointerType!=='touch' && e.pointerType!=='pen' && e.button!==0)
+  return;
 
- longPressStartLatLng=e.latlng;
- longPressStartPoint=map.latLngToContainerPoint(e.latlng);
+ cancelLongPress();
+ longPressTriggered=false;
+ longPressActive=true;
+
+ const p=getContainerPoint(e);
+ longPressStartX=e.clientX;
+ longPressStartY=e.clientY;
+ longPressStartLatLng=map.containerPointToLatLng(p);
 
  longPressTimer=setTimeout(()=>{
-  if(!longPressStartLatLng)return;
+  if(!longPressActive || !longPressStartLatLng)return;
 
   const lat=longPressStartLatLng.lat.toFixed(6);
   const lon=longPressStartLatLng.lng.toFixed(6);
+  longPressTriggered=true;
 
   L.popup({closeButton:true,closeOnClick:false,autoClose:true})
    .setLatLng(longPressStartLatLng)
@@ -121,21 +140,27 @@ function startLongPress(e){
 }
 
 function checkLongPressMove(e){
- if(longPressTimer===null || !longPressStartPoint)return;
+ if(!longPressActive || longPressTimer===null)return;
 
- const p=map.latLngToContainerPoint(e.latlng);
- const dx=p.x-longPressStartPoint.x;
- const dy=p.y-longPressStartPoint.y;
+ const dx=e.clientX-longPressStartX;
+ const dy=e.clientY-longPressStartY;
 
  if(Math.sqrt(dx*dx+dy*dy)>LONG_PRESS_MOVE_TOLERANCE)
   cancelLongPress();
 }
 
-map.on('mousedown touchstart',startLongPress);
-map.on('mousemove touchmove',checkLongPressMove);
-map.on('mouseup touchend touchcancel mouseout',cancelLongPress);
+function endLongPress(){
+ cancelLongPress();
+}
 
-
+// Pointer Events sono più affidabili su Android Chrome rispetto
+// alla combinazione Leaflet mousedown/touchstart.
+const mapContainer=map.getContainer();
+mapContainer.addEventListener('pointerdown',startLongPress,{passive:true});
+mapContainer.addEventListener('pointermove',checkLongPressMove,{passive:true});
+mapContainer.addEventListener('pointerup',endLongPress,{passive:true});
+mapContainer.addEventListener('pointercancel',endLongPress,{passive:true});
+mapContainer.addEventListener('pointerleave',endLongPress,{passive:true});
 /* =========================================================
    BRICCOLE
    Legge briccole.json e usa solo gli elementi
