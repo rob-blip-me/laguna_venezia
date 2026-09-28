@@ -460,7 +460,7 @@ lon:13.102312,
 
 function updateLitoranea(){
 litoraneaLayer.clearLayers();
-if(map.getZoom()<=13.5) {
+if(map.getZoom()<=11.5) {
   return;
 }
 percorso.forEach(tappa=>{
