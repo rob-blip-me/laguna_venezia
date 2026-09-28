@@ -371,6 +371,59 @@ console.log("Ostacoli caricati:",obstacles.length);
 }
 
 map.on("zoomend",updateObstacles);
+
+
+/* =========================================================
+   PERCORSO LITORANEA
+   Le indicazioni sono visibili da zoom 14.
+   ========================================================= */
+
+
+const litoraneaLayer=L.layerGroup().addTo(map);
+
+const litoraneaIcon = L.divIcon({
+  className: "litoranea-icon",
+  html: '<img src="litoranea.png" alt="litoranea" style="width:80%; height:80%; display:block;" />',
+  iconSize: [36, 36],
+  iconAnchor: [18, 18]
+});
+
+// Ostacolo inserito direttamente nel codice
+const percorso=[
+ {name:"Percorso Litoranea",
+lat: 45.511640,
+lon: 12.597885,
+ description:"Funziona?"
+}
+];
+
+function updateLitoranea(){
+LitoraneaLayer.clearLayers();
+if(map.getZoom()<=13.5) {
+  return;
+}
+percorso.forEach(tappa=>{
+ const marker=L.marker(
+  [tappa.lat,tappa.lon],
+  {
+   icon:litoraneaIcon,
+   zIndexOffset:10000,
+   title:tappa.name
+  }
+ ).addTo(litoraneaLayer);
+
+ marker.bindPopup(
+  '<b>'+esc(tappa.name)+'</b>'+
+  '<br>'+esc(tappa.description)
+ );
+});
+
+console.log("Percorso caricato:",percorso.length);
+}
+
+map.on("zoomend",updateLitoranea);
+
+
 /* =========================================================
    PUNTI DI INTERESSE
    ========================================================= */
