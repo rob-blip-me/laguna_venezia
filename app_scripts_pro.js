@@ -371,6 +371,7 @@ console.log("Ostacoli caricati:",obstacles.length);
 }
 
 map.on("zoomend",updateObstacles);
+updateObstacles();
 
 
 /* =========================================================
@@ -422,6 +423,7 @@ console.log("Percorso caricato:",percorso.length);
 }
 
 map.on("zoomend",updateLitoranea);
+updateLitoranea();
 
 
 /* =========================================================
