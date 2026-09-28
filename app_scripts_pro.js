@@ -391,14 +391,14 @@ const litoraneaIcon = L.divIcon({
 // Ostacolo inserito direttamente nel codice
 const percorso=[
  {name:"Percorso Litoranea",
-lat: 45.511640,
-lon: 12.597885,
+lat:45.511640,
+lon:12.597885,
  description:"Funziona?"
 }
 ];
 
 function updateLitoranea(){
-LitoraneaLayer.clearLayers();
+litoraneaLayer.clearLayers();
 if(map.getZoom()<=13.5) {
   return;
 }
