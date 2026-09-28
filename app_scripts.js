@@ -87,7 +87,7 @@ let longPressStartY=0;
 let longPressActive=false;
 let longPressTriggered=false;
 
-const LONG_PRESS_TIME=3000;
+const LONG_PRESS_TIME=2000;
 const LONG_PRESS_MOVE_TOLERANCE=25;
 
 function cancelLongPress(){
