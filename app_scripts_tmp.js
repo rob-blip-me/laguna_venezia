@@ -74,6 +74,69 @@ function updateBathymetryLabels(){
 map.on("zoomend moveend",updateBathymetryLabels);
 
 /* =========================================================
+   LONG PRESS: COORDINATE DEL PUNTO TOCCATO/CLICCATO
+   Tenendo premuto per 3 secondi in un punto della mappa,
+   mostra latitudine e longitudine. Il popup ha il normale
+   pulsante X di Leaflet per chiuderlo.
+   ========================================================= */
+
+let longPressTimer=null;
+let longPressStartLatLng=null;
+let longPressStartPoint=null;
+const LONG_PRESS_TIME=3000;
+const LONG_PRESS_MOVE_TOLERANCE=12;
+
+function cancelLongPress(){
+ if(longPressTimer!==null){
+  clearTimeout(longPressTimer);
+  longPressTimer=null;
+ }
+ longPressStartLatLng=null;
+ longPressStartPoint=null;
+}
+
+function startLongPress(e){
+ cancelLongPress();
+
+ longPressStartLatLng=e.latlng;
+ longPressStartPoint=map.latLngToContainerPoint(e.latlng);
+
+ longPressTimer=setTimeout(()=>{
+  if(!longPressStartLatLng)return;
+
+  const lat=longPressStartLatLng.lat.toFixed(6);
+  const lon=longPressStartLatLng.lng.toFixed(6);
+
+  L.popup({closeButton:true,closeOnClick:false,autoClose:true})
+   .setLatLng(longPressStartLatLng)
+   .setContent(
+    '<b>Coordinate</b><br>'+
+    'Latitudine: '+lat+'<br>'+ 
+    'Longitudine: '+lon
+   )
+   .openOn(map);
+
+  longPressTimer=null;
+ },LONG_PRESS_TIME);
+}
+
+function checkLongPressMove(e){
+ if(longPressTimer===null || !longPressStartPoint)return;
+
+ const p=map.latLngToContainerPoint(e.latlng);
+ const dx=p.x-longPressStartPoint.x;
+ const dy=p.y-longPressStartPoint.y;
+
+ if(Math.sqrt(dx*dx+dy*dy)>LONG_PRESS_MOVE_TOLERANCE)
+  cancelLongPress();
+}
+
+map.on('mousedown touchstart',startLongPress);
+map.on('mousemove touchmove',checkLongPressMove);
+map.on('mouseup touchend touchcancel mouseout',cancelLongPress);
+
+
+/* =========================================================
    BRICCOLE
    Legge briccole.json e usa solo gli elementi
    con seamark:type = "pile".
