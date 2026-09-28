@@ -396,11 +396,11 @@ lat:45.497564,
 lon:12.579603,
  description:"Tappa 1"
 },
- {name:"Percorso Litoranea",
+{name:"Percorso Litoranea",
 lat: 45.511640,
 lon: 12.597885,
  description:"Tappa 2"
-}.
+},
  {name:"Percorso Litoranea",
 lat: 45.536175,
 lon: 12.656250,
