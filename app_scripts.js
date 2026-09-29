@@ -522,8 +522,8 @@ lon:13.018134,
  description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
-lat:45.659227,
-lon:13.052037,
+lat:45.664642,
+lon:13.062255,
  description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
@@ -576,15 +576,20 @@ lon:12.721739,
  description:"Conca di Cortelazzo - tel. +39 329 9720397"
 },
  {name:"Chiusa",
-lat:45.659707,
-lon:13.058710,
- description:"Conca di Bevazzana - Bevazzana Destra (Veneta): Normalmente aperta. tel. +39 329 9720397, Bevazzana Sinistra (Friulana): tel. +39 349 1536346"
+lat:45.659805,
+lon:13.060150,
+ description:"Conca di Bevazzana - Bevazzana Destra (Veneta): Normalmente aperta. tel. +39 329 9720397"
+},
+ {name:"Chiusa",
+lat:45.671470,
+lon:13.068651,
+ description:"Conca di Bevazzana - Bevazzana Sinistra (Friulana): tel. +39 349 1536346"
 }
 ];
 
 function updateLitoranea(){
 litoraneaLayer.clearLayers();
-if(map.getZoom()<=13.5) {
+if(map.getZoom()<=12.5) {
   return;
 }
 percorso.forEach(tappa=>{
