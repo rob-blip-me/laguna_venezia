@@ -580,6 +580,63 @@ console.log("Percorso caricato:",percorso.length);
 map.on("zoomend",updateLitoranea);
 updateLitoranea();
 
+/* CHIUSE ================================================ 
+========================================================== */
+
+const chiuseLayer=L.layerGroup().addTo(map);
+
+const chiuseIcon = L.divIcon({
+  className: "chiuse-icon",
+  html: '<img src="chiuse.png" alt="Chiusa" style="width:100%; height:100%; display:block;" />',
+  iconSize: [36, 36],
+  iconAnchor: [18, 18]
+});
+
+// Ostacolo inserito direttamente nel codice
+const chiuse=[
+ {name:"Chiusa",
+lat:45.492841,
+lon:12.576642,
+ description:"Conca di Cavallino"
+},
+{name:"Chiusa",
+lat:45.535303,
+lon:12.721739,
+ description:"Conca di Cortelazzo"
+},
+ {name:"Chiusa",
+lat:45.659707,
+lon:13.058710,
+ description:"Conca di Bevazzana"
+}
+];
+
+function updateChiuse(){
+chiuseLayer.clearLayers();
+if(map.getZoom()<=13.5) {
+  return;
+}
+chiuse.forEach(chiusa=>{
+ const marker=L.marker(
+  [chiusa.lat,chiusa.lon],
+  {
+   icon:chiuseIcon,
+   zIndexOffset:10000,
+   title:chiusa.name
+  }
+ ).addTo(chiuseLayer);
+
+ marker.bindPopup(
+  '<b>'+esc(chiusa.name)+'</b>'+
+  '<br>'+esc(chiusa.description)
+ );
+});
+
+console.log("Chiuse caricate:",chiuse.length);
+}
+
+map.on("zoomend",updateChiuse);
+updateChiuse();
 
 /* =========================================================
    PUNTI DI INTERESSE
