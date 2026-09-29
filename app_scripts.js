@@ -517,8 +517,8 @@ lon:12.966914,
  description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
-lat:45.673000,
-lon:13.072250,
+lat:45.673137,
+lon:13.072509,
  description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
