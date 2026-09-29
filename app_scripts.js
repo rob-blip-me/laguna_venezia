@@ -522,18 +522,13 @@ lon:13.018134,
  description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
-lat:45.664642,
-lon:13.062255,
- description:"Segnaposto"
-},
- {name:"Percorso Litoranea",
 lat:45.671869,
 lon:13.069589,
  description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
-lat:45.686471,
-lon:13.097248,
+lat:45.672447,
+lon:13.070897,
  description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
@@ -589,7 +584,7 @@ lon:13.068651,
 
 function updateLitoranea(){
 litoraneaLayer.clearLayers();
-if(map.getZoom()<=12.5) {
+if(map.getZoom()<=13) {
   return;
 }
 percorso.forEach(tappa=>{
