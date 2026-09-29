@@ -613,7 +613,7 @@ chiuse.forEach(chiusa=>{
    zIndexOffset:10000,
    title:chiusa.name
   }
- ).addTo(chiuseLayer);
+ ).addTo(litoraneaLayer);
 
  marker.bindPopup(
   '<b>'+esc(chiusa.name)+'</b>'+
