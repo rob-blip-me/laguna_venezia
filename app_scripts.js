@@ -517,13 +517,13 @@ lon:12.966914,
  description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
-lat:45.644813,
-lon:13.018134,
+lat:45.664581,
+lon:13.062218,
  description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
-lat:45.672447,
-lon:13.070897,
+lat:45.673023,
+lon:13.072250,
  description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
