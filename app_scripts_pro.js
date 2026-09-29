@@ -394,162 +394,162 @@ const percorso=[
  {name:"Percorso Litoranea",
 lat:45.497564,
 lon:12.579603,
- description:"Tappa"
+ description:"Segnaposto"
 },
 {name:"Percorso Litoranea",
 lat:45.511640,
 lon:12.597885,
- description:"Tappa"
+ description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
 lat:45.536175,
 lon:12.656250,
- description:"Tappa"
+ description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
 lat:45.592420,
 lon:12.827740,
- description:"Tappa"
+ description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
 lat:45.592660,
 lon:12.859325,
- description:"Tappa"
+ description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
 lat:45.613197,
 lon:12.881813,
- description:"Tappa"
+ description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
 lat:45.622742,
 lon:12.917261,
- description:"Tappa"
+ description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
 lat:45.640568,
 lon:12.951508,
- description:"Tappa"
+ description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
 lat:45.637447,
 lon:12.995710,
- description:"Tappa"
+ description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
 lat:45.653693,
 lon:13.029206,
- description:"Tappa"
+ description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
 lat:45.664566,
 lon:13.062916,
- description:"Tappa"
+ description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
 lat:45.681059,
 lon:13.089094,
- description:"Tappa"
+ description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
 lat:45.695209,
 lon:13.102312,
- description:"Tappa"
+ description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
 lat:45.521143,
 lon:12.633076,
- description:"Tappa"
+ description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
 lat:45.534852,
 lon:12.642946,
- description:"Tappa"
+ description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
 lat:45.536175,
 lon:12.695131,
- description:"Tappa"
+ description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
 lat:45.538294,
 lon:12.727575,
- description:"Tappa"
+ description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
 lat:45.550722,
 lon:12.732360,
- description:"Tappa"
+ description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
 lat:45.563463,
 lon:12.751737,
- description:"Tappa"
+ description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
 lat:45.571395,
 lon:12.796712,
- description:"Tappa"
+ description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
 lat:45.589327,
 lon:12.813921,
- description:"Tappa"
+ description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
 lat:45.593771,
 lon:12.850528,
- description:"Tappa"
+ description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
 lat:45.629795,
 lon:12.933054,
- description:"Tappa"
+ description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
 lat:45.637372,
 lon:12.945714,
- description:"Tappa"
+ description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
 lat:45.642863,
 lon:12.966914,
- description:"Tappa"
+ description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
 lat:45.644813,
 lon:13.018134,
- description:"Tappa"
+ description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
 lat:45.659227,
 lon:13.052037,
- description:"Tappa"
+ description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
 lat:45.671869,
 lon:13.069589,
- description:"Tappa"
+ description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
 lat:45.686471,
 lon:13.097248,
- description:"Tappa"
+ description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
 lat:45.629345,
 lon:12.893679,
- description:"Tappa"
+ description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
 lat:45.621692,
 lon:12.906189,
- description:"Tappa"
+ description:"Segnaposto"
 },
  {name:"Percorso Litoranea",
 lat:45.601548,
 lon:12.877092,
- description:"Tappa"
+ description:"Segnaposto"
 }
 ];
 
@@ -587,27 +587,27 @@ const chiuseLayer=L.layerGroup().addTo(map);
 
 const chiuseIcon = L.divIcon({
   className: "chiuse-icon",
-  html: '<img src="chiuse.png" alt="Chiusa" style="width:100%; height:100%; display:block;" />',
+  html: '<img src="chiuse.png" alt="Chiusa" style="width:90%; height:90%; display:block;" />',
   iconSize: [36, 36],
   iconAnchor: [18, 18]
 });
 
-// Ostacolo inserito direttamente nel codice
+// Chiusa inserita direttamente nel codice
 const chiuse=[
  {name:"Chiusa",
 lat:45.492841,
 lon:12.576642,
- description:"Conca di Cavallino"
+ description:"Conca di Cavallino - tel. +39 329 9720397"
 },
 {name:"Chiusa",
 lat:45.535303,
 lon:12.721739,
- description:"Conca di Cortelazzo"
+ description:"Conca di Cortelazzo - tel. +39 329 9720397"
 },
  {name:"Chiusa",
 lat:45.659707,
 lon:13.058710,
- description:"Conca di Bevazzana"
+ description:"Conca di Bevazzana - Bevazzana Destra (Veneta): Normalmente aperta. tel. +39 329 9720397, Bevazzana Sinistra (Friulana): tel. +39 349 1536346"
 }
 ];
 
