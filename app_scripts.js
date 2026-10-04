@@ -720,72 +720,88 @@ let accuracy=null;
 let watchId=null;
 let followUser=true;
 
+let marker = null;
+let accuracy = null;
+let watchId = null;
+let followUser = true;
+
+// Registrare questo evento una sola volta, dopo aver creato map
+map.on('dragstart', function(){
+    followUser = false;
+});
+
 function locate(){
 
- if(!navigator.geolocation){
-  return;
- }
+    if(!navigator.geolocation){
+        return;
+    }
 
- followUser=true;
+    // Riattiva il centraggio automatico
+    followUser = true;
 
- if(watchId!==null)
-  navigator.geolocation.clearWatch(watchId);
+    // Interrompe il precedente watch GPS
+    if(watchId !== null){
+        navigator.geolocation.clearWatch(watchId);
+        watchId = null;
+    }
 
- watchId=navigator.geolocation.watchPosition(
-  p=>{
+    watchId = navigator.geolocation.watchPosition(
 
-   const ll=[
-    p.coords.latitude,
-    p.coords.longitude
-   ];
+        p => {
 
-   const a=p.coords.accuracy||0;
+            const ll = [
+                p.coords.latitude,
+                p.coords.longitude
+            ];
 
-   if(followUser)
-    map.panTo(ll);
+            const a = p.coords.accuracy || 0;
 
-   if(!marker){
+            // Centra la mappa solo se followUser è true
+            if(followUser){
+                map.panTo(ll);
+            }
 
-    marker=L.circleMarker(ll,{
-     radius:8,
-     weight:3,
-     fillOpacity:1
-    }).addTo(map);
+            // Crea il marker se non esiste o non è più sulla mappa
+            if(!marker || !map.hasLayer(marker)){
 
-    map.on('dragstart',function(){
-     followUser=false;
-    });
+                marker = L.circleMarker(ll, {
+                    radius: 8,
+                    weight: 3,
+                    fillOpacity: 1
+                }).addTo(map);
 
-   }else{
-    marker.setLatLng(ll);
-   }
+            } else {
 
-   if(!accuracy){
+                // Aggiorna la posizione del marker esistente
+                marker.setLatLng(ll);
+            }
 
-    accuracy=L.circle(ll,{
-     radius:a,
-     weight:1,
-     fillOpacity:.08
-    }).addTo(map);
+            // Crea o aggiorna il cerchio dell'accuratezza
+            if(!accuracy || !map.hasLayer(accuracy)){
 
-   }else{
+                accuracy = L.circle(ll, {
+                    radius: a,
+                    weight: 1,
+                    fillOpacity: 0.08
+                }).addTo(map);
 
-    accuracy
-    .setLatLng(ll)
-    .setRadius(a);
+            } else {
 
-   }
+                accuracy
+                    .setLatLng(ll)
+                    .setRadius(a);
+            }
 
-  },
+        },
 
-  e=>{
-   console.error("GPS:",e.message);
-  },
+        e => {
+            console.error("GPS:", e.message);
+        },
 
-  {
-   enableHighAccuracy:true,
-   timeout:15000,
-   maximumAge:0
-  }
- );
+        {
+            enableHighAccuracy: true,
+            timeout: 15000,
+            maximumAge: 0
+        }
+    );
 }
