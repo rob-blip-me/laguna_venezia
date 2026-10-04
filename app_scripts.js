@@ -237,6 +237,10 @@ map.on("zoomend moveend",updateBriccole);
  //layers:[28,51]
 //}).addTo(map);
 
+/* =========================================================
+   CANALI: mostra solo a zoom > 13.5.
+   ========================================================= */
+
 const channelStyle={
  color:'#42a5f5',
  weight:1.5,
@@ -729,6 +733,12 @@ let followUser = true;
 map.on('dragstart', function(){
     followUser = false;
 });
+
+/* =========================================================
+   LOCALIZZAZIONE: 
+   la funzione locate() è attivata premendo il bottone 
+   "Locate" sulla mappa
+   ========================================================= */
 
 function locate(){
 
