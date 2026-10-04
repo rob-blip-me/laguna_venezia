@@ -715,6 +715,11 @@ let accuracy=null;
 let watchId=null;
 let followUser=true;
 
+let marker=null;
+let accuracy=null;
+let watchId=null;
+let followUser=true;
+
 function locate(){
 
  if(!navigator.geolocation){
@@ -726,47 +731,7 @@ function locate(){
  if(watchId!==null)
   navigator.geolocation.clearWatch(watchId);
 
- let animationFrame=null;
- let currentLatLng=null;
- let targetLatLng=null;
-
- function animateMarker(){
-
-  if(!marker || !currentLatLng || !targetLatLng){
-   animationFrame=null;
-   return;
-  }
-
-  const speed=0.12;
-
-  currentLatLng.lat +=
-   (targetLatLng.lat-currentLatLng.lat)*speed;
-
-  currentLatLng.lng +=
-   (targetLatLng.lng-currentLatLng.lng)*speed;
-
-  marker.setLatLng(currentLatLng);
-
-  if(
-   Math.abs(targetLatLng.lat-currentLatLng.lat)<0.000001 &&
-   Math.abs(targetLatLng.lng-currentLatLng.lng)<0.000001
-  ){
-   currentLatLng={
-    lat:targetLatLng.lat,
-    lng:targetLatLng.lng
-   };
-
-   marker.setLatLng(currentLatLng);
-   animationFrame=null;
-   return;
-  }
-
-  animationFrame=requestAnimationFrame(animateMarker);
- }
-
-
  watchId=navigator.geolocation.watchPosition(
-
   p=>{
 
    const ll=[
@@ -776,10 +741,8 @@ function locate(){
 
    const a=p.coords.accuracy||0;
 
-
    if(followUser)
     map.panTo(ll);
-
 
    if(!marker){
 
@@ -789,31 +752,13 @@ function locate(){
      fillOpacity:1
     }).addTo(map);
 
-    currentLatLng={
-     lat:ll[0],
-     lng:ll[1]
-    };
-
-    targetLatLng={
-     lat:ll[0],
-     lng:ll[1]
-    };
-
     map.on('dragstart',function(){
      followUser=false;
     });
 
    }else{
-
-    targetLatLng={
-     lat:ll[0],
-     lng:ll[1]
-    };
-
-    if(animationFrame===null)
-     animationFrame=requestAnimationFrame(animateMarker);
+    marker.setLatLng(ll);
    }
-
 
    if(!accuracy){
 
@@ -826,8 +771,8 @@ function locate(){
    }else{
 
     accuracy
-     .setLatLng(ll)
-     .setRadius(a);
+    .setLatLng(ll)
+    .setRadius(a);
 
    }
 
@@ -842,6 +787,5 @@ function locate(){
    timeout:15000,
    maximumAge:0
   }
-
  );
 }
