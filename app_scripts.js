@@ -724,11 +724,7 @@ let marker = null;
 let accuracy = null;
 let watchId = null;
 let followUser = true;
-
-// Registrare questo evento una sola volta, dopo aver creato map
-map.on('dragstart', function(){
-    followUser = false;
-});
+let dragHandlerInstalled = false;
 
 function locate(){
 
@@ -738,6 +734,16 @@ function locate(){
 
     // Riattiva il centraggio automatico
     followUser = true;
+
+    // Installa il gestore del trascinamento una sola volta
+    if(!dragHandlerInstalled){
+
+        map.on('dragstart', function(){
+            followUser = false;
+        });
+
+        dragHandlerInstalled = true;
+    }
 
     // Interrompe il precedente watch GPS
     if(watchId !== null){
@@ -764,28 +770,27 @@ function locate(){
             // Crea il marker se non esiste o non è più sulla mappa
             if(!marker || !map.hasLayer(marker)){
 
-                marker = L.circleMarker(ll, {
+                marker = L.circleMarker(ll,{
                     radius:8,
                     weight:3,
                     fillOpacity:1
                 }).addTo(map);
 
-            } else {
+            }else{
 
-                // Aggiorna la posizione del marker esistente
                 marker.setLatLng(ll);
             }
 
             // Crea o aggiorna il cerchio dell'accuratezza
             if(!accuracy || !map.hasLayer(accuracy)){
 
-                accuracy = L.circle(ll, {
+                accuracy = L.circle(ll,{
                     radius:a,
                     weight:1,
                     fillOpacity:0.08
                 }).addTo(map);
 
-            } else {
+            }else{
 
                 accuracy
                     .setLatLng(ll)
@@ -795,7 +800,7 @@ function locate(){
         },
 
         e => {
-            console.error("GPS:", e.message);
+            console.error("GPS:",e.message);
         },
 
         {
