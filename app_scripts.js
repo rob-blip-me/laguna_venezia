@@ -714,15 +714,11 @@ function selectPOI(value){
  document.getElementById("poiMenu").style.display="none";
 }
 
-let marker=null;
-let accuracy=null;
-let watchId=null;
-let followUser=true;
-
-let marker=null;
-let accuracy=null;
-let watchId=null;
-let followUser=true;
+/* =========================================================
+   LOCALIZZAZIONE: 
+   la funzione locate() è attivata premendo il bottone 
+   "Locate" sulla mappa
+   ========================================================= */
 
 let marker = null;
 let accuracy = null;
@@ -733,12 +729,6 @@ let followUser = true;
 map.on('dragstart', function(){
     followUser = false;
 });
-
-/* =========================================================
-   LOCALIZZAZIONE: 
-   la funzione locate() è attivata premendo il bottone 
-   "Locate" sulla mappa
-   ========================================================= */
 
 function locate(){
 
