@@ -765,9 +765,9 @@ function locate(){
             if(!marker || !map.hasLayer(marker)){
 
                 marker = L.circleMarker(ll, {
-                    radius: 8,
-                    weight: 3,
-                    fillOpacity: 1
+                    radius:8,
+                    weight:3,
+                    fillOpacity:1
                 }).addTo(map);
 
             } else {
@@ -780,9 +780,9 @@ function locate(){
             if(!accuracy || !map.hasLayer(accuracy)){
 
                 accuracy = L.circle(ll, {
-                    radius: a,
-                    weight: 1,
-                    fillOpacity: 0.08
+                    radius:a,
+                    weight:1,
+                    fillOpacity:0.08
                 }).addTo(map);
 
             } else {
@@ -799,9 +799,9 @@ function locate(){
         },
 
         {
-            enableHighAccuracy: true,
-            timeout: 15000,
-            maximumAge: 0
+            enableHighAccuracy:true,
+            timeout:15000,
+            maximumAge:0
         }
     );
 }
