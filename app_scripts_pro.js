@@ -787,9 +787,9 @@ function locate(){
     }
 
     // Interrompe il precedente watch GPS
-    if(watchId !== null){
+    //if(watchId !== null){
 		stopLocate();
-    }
+		//}
 
     watchId = navigator.geolocation.watchPosition(
 
