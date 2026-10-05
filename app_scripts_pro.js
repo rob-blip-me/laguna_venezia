@@ -720,6 +720,17 @@ function selectPOI(value){
    "Locate" sulla mappa
    ========================================================= */
 
+function toggleGps(button) {
+            button.classList.toggle('active');
+            const isAttivo = button.classList.contains('active');
+
+            if (isAttivo) {
+                console.log("GPS Attivato!");
+            } else {
+                console.log("GPS Disattivato!");
+            }
+        }
+
 let marker = null;
 let accuracy = null;
 let watchId = null;
