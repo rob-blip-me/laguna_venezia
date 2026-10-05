@@ -8,6 +8,8 @@
 <link rel="apple-touch-icon" href="images/fish192.png">
 <title>Laguna di Venezia - AVT</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <!-- Importiamo FontAwesome per l'icona -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 html,body,#map{height:100%;width:100vw;margin:0}
 #map{min-height:100vh}
@@ -111,17 +113,50 @@ button{padding:7px 10px;border:0;border-radius:7px;background:rgba(255,255,255,1
   border: 0;
   text-align: center;
 }
+    
+        /* Stile base del bottone */
+        .gps-btn {
+            background-color: #f0f0f0;
+            border: 2px solid #ccc;
+            border-radius: 50%; /* Lo rende rotondo, stile app */
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            color: #555;
+            transition: all 0.2s ease;
+        }
 
+        /* Effetto hover */
+        .gps-btn:hover {
+            background-color: #e4e4e4;
+        }
+
+        /* Stato ATTIVO (quando il GPS è acceso) */
+        .gps-btn.active {
+            background-color: #007bff; /* Blu acceso */
+            border-color: #0056b3;
+            color: white; /* Icona bianca */
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+        }
+    
 </style>
 </head>
 <body>
 
 <div id="map"></div>
 
+
+<button class="gps-btn" id="gpsButton" onclick="toggleGps(this)" title="Attiva GPS">
+        <i class="fa-solid fa-location-crosshairs"></i>
+    </button>
 <div id="gpsButton">
 <button onclick="locate()">📍</button>
 </div>
-
+  
 <!-- <button id="menuButton" onclick="toggleMenu()">☰</button> -->
 <button id="menuButton" onclick="toggleMenu()">  <svg viewBox="0 0 24 24" class="menu-icon">
     <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
