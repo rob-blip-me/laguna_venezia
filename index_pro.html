@@ -8,12 +8,13 @@
 <link rel="apple-touch-icon" href="images/fish192.png">
 <title>Laguna di Venezia - AVT</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <!-- Importiamo FontAwesome per l'icona -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 html,body,#map{height:100%;width:100vw;margin:0}
 #map{min-height:100vh}
 h3{margin:0 0 8px;font-size:17px}
 button{padding:7px 10px;border:0;border-radius:7px;background:rgba(255,255,255,1);font-size:14px}
-#gpsButton{position:absolute;top:12px;left:50px;z-index:1000}
 <!-- #menuButton{position:absolute;top:10px;right:10px;z-index:1000;width:40px;height:40px;padding:0;border:0;border-radius:7px;background:gray;color:white;line-height:40px;align-items:center; justify-content: center;} -->
 #menuButton {
   position: absolute;
@@ -88,19 +89,6 @@ button{padding:7px 10px;border:0;border-radius:7px;background:rgba(255,255,255,1
  scrollbar-width:none;
  -ms-overflow-style:none;
 }
-<!--
-  #bathymetryLegend{position:absolute;bottom:18px;left:10px;z-index:1000;background:rgba(255,255,255,.88);padding:5px 7px;border-radius:6px;font:11px Arial,sans-serif;color:#333;box-shadow:0 1px 4px rgba(0,0,0,.25)}
-.bathymetry-label{
- background:transparent;
- border:0;
- color:#000;
- font:9px Arial,sans-serif;
- font-weight:normal;
- white-space:nowrap;
- text-align:center;
- pointer-events:none;
-}
-  -->
 .menu-icon {
   width: 24px;
   height: 24px;
@@ -124,17 +112,90 @@ button{padding:7px 10px;border:0;border-radius:7px;background:rgba(255,255,255,1
   border: 0;
   text-align: center;
 }
+    
+.button-container {
+        position: absolute;
+        top: 12px;
+        left: 50px;
+        z-index: 1000;
+        display: flex;
+        gap: 5px; /* Spazio tra i due bottoni */
+        align-items: center;
+    }
 
+        /* Stile comune o del primo bottone */
+        .gps-btn {
+            background-color: #f0f0f0;
+            border: 2px solid #ccc;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            color: #555;
+            transition: all 0.2s ease;
+        }
+
+        .gps-btn:hover {
+            background-color: #e4e4e4;
+        }
+
+        /* Stato ATTIVO del primo bottone */
+        .gps-btn.active {
+            background-color: #007bff;
+            border-color: #0056b3;
+            color: white;
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+        }
+
+        /* Stile del secondo bottone (se vuoi renderlo simile) */
+        .second-btn {
+            background-color: #f0f0f0;
+            border: 2px solid #ccc;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.2s ease;
+        }
+
+        .second-btn:hover {
+            background-color: #e4e4e4;
+        }    
 </style>
 </head>
 <body>
 
 <div id="map"></div>
+<div class="button-container">
+        <!-- Primo bottone (con FontAwesome) -->
+        <button class="gps-btn" id="gpsButton" onclick="toggleGps(this)" title="Attiva/Disattiva GPS">
+            <i class="fa-solid fa-location-crosshairs"></i>
+        </button>
 
+        <!-- Secondo bottone (con emoji 📍) -->
+        <button class="second-btn" onclick="locate()" title="Centra GPS">
+            📍
+        </button>
+    </div>
+<!--
+    <div id="GPS">
+<button class="gps-btn" id="gpsButton" onclick="toggleGps(this)" title="Attiva GPS">
+        <i class="fa-solid fa-location-crosshairs"></i>
+    </button>
+    </div>
 <div id="gpsButton">
-<button onclick="locate()">📍 La mia posizione</button>
+<button onclick="locate()">📍</button>
 </div>
-
+    -->
+  
 <!-- <button id="menuButton" onclick="toggleMenu()">☰</button> -->
 <button id="menuButton" onclick="toggleMenu()">  <svg viewBox="0 0 24 24" class="menu-icon">
     <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
@@ -156,7 +217,7 @@ button{padding:7px 10px;border:0;border-radius:7px;background:rgba(255,255,255,1
   
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/esri-leaflet@3.0.16/dist/esri-leaflet.js"></script>
-<script src="app_scripts.js?v=1.4"></script>
+<script src="app_scripts_pro.js?v=1.4"></script>
 
 
 </body>
