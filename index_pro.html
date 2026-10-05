@@ -114,13 +114,19 @@ button{padding:7px 10px;border:0;border-radius:7px;background:rgba(255,255,255,1
   text-align: center;
 }
     
-        /* Stile base del bottone */
+.button-container {
+            display: flex;
+            gap: 10px; /* Spazio tra i due bottoni */
+            align-items: center;
+        }
+
+        /* Stile comune o del primo bottone */
         .gps-btn {
             background-color: #f0f0f0;
             border: 2px solid #ccc;
-            border-radius: 50%; /* Lo rende rotondo, stile app */
-            width: 30px;
-            height: 30px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -130,26 +136,54 @@ button{padding:7px 10px;border:0;border-radius:7px;background:rgba(255,255,255,1
             transition: all 0.2s ease;
         }
 
-        /* Effetto hover */
         .gps-btn:hover {
             background-color: #e4e4e4;
         }
 
-        /* Stato ATTIVO (quando il GPS è acceso) */
+        /* Stato ATTIVO del primo bottone */
         .gps-btn.active {
-            background-color: #007bff; /* Blu acceso */
+            background-color: #007bff;
             border-color: #0056b3;
-            color: white; /* Icona bianca */
+            color: white;
             box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
         }
-    
+
+        /* Stile del secondo bottone (se vuoi renderlo simile) */
+        .second-btn {
+            background-color: #f0f0f0;
+            border: 2px solid #ccc;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.2s ease;
+        }
+
+        .second-btn:hover {
+            background-color: #e4e4e4;
+        }    
 </style>
 </head>
 <body>
 
 <div id="map"></div>
+<div class="button-container">
+        <!-- Primo bottone (con FontAwesome) -->
+        <button class="gps-btn" id="gpsButton" onclick="toggleGps(this)" title="Attiva GPS">
+            <i class="fa-solid fa-location-crosshairs"></i>
+        </button>
 
-<div id="GPS">
+        <!-- Secondo bottone (con emoji 📍) -->
+        <button class="second-btn" onclick="locate()" title="Localizza">
+            📍
+        </button>
+    </div>
+<!--
+    <div id="GPS">
 <button class="gps-btn" id="gpsButton" onclick="toggleGps(this)" title="Attiva GPS">
         <i class="fa-solid fa-location-crosshairs"></i>
     </button>
@@ -157,6 +191,7 @@ button{padding:7px 10px;border:0;border-radius:7px;background:rgba(255,255,255,1
 <div id="gpsButton">
 <button onclick="locate()">📍</button>
 </div>
+    -->
   
 <!-- <button id="menuButton" onclick="toggleMenu()">☰</button> -->
 <button id="menuButton" onclick="toggleMenu()">  <svg viewBox="0 0 24 24" class="menu-icon">
