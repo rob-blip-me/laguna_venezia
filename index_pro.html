@@ -15,7 +15,6 @@ html,body,#map{height:100%;width:100vw;margin:0}
 #map{min-height:100vh}
 h3{margin:0 0 8px;font-size:17px}
 button{padding:7px 10px;border:0;border-radius:7px;background:rgba(255,255,255,1);font-size:14px}
-#gpsButton{position:absolute;top:12px;left:50px;z-index:1000}
 <!-- #menuButton{position:absolute;top:10px;right:10px;z-index:1000;width:40px;height:40px;padding:0;border:0;border-radius:7px;background:gray;color:white;line-height:40px;align-items:center; justify-content: center;} -->
 #menuButton {
   position: absolute;
@@ -115,10 +114,14 @@ button{padding:7px 10px;border:0;border-radius:7px;background:rgba(255,255,255,1
 }
     
 .button-container {
-            display: flex;
-            gap: 10px; /* Spazio tra i due bottoni */
-            align-items: center;
-        }
+        position: absolute;
+        top: 12px;
+        left: 50px;
+        z-index: 1000;
+        display: flex;
+        gap: 10px; /* Spazio tra i due bottoni */
+        align-items: center;
+    }
 
         /* Stile comune o del primo bottone */
         .gps-btn {
