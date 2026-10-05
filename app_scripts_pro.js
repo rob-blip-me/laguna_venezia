@@ -783,12 +783,14 @@ function locate(){
         dragHandlerInstalled = true;
     }
 
+	
     // Interrompe il precedente watch GPS
     if(watchId !== null){
 		stopLocate();
 	}
     // Riattiva il centraggio automatico
     followUser = true;
+   
 
     watchId = navigator.geolocation.watchPosition(
 
