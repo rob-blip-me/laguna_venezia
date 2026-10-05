@@ -773,9 +773,6 @@ function locate(){
     }
 	
 
-    // Riattiva il centraggio automatico
-    followUser = true;
-
     // Installa il gestore del trascinamento una sola volta
     if(!dragHandlerInstalled){
 
@@ -787,9 +784,11 @@ function locate(){
     }
 
     // Interrompe il precedente watch GPS
-    //if(watchId !== null){
+    if(watchId !== null){
 		stopLocate();
-		//}
+	}
+    // Riattiva il centraggio automatico
+    followUser = true;
 
     watchId = navigator.geolocation.watchPosition(
 
