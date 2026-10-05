@@ -119,7 +119,7 @@ button{padding:7px 10px;border:0;border-radius:7px;background:rgba(255,255,255,1
         left: 50px;
         z-index: 1000;
         display: flex;
-        gap: 10px; /* Spazio tra i due bottoni */
+        gap: 5px; /* Spazio tra i due bottoni */
         align-items: center;
     }
 
@@ -128,8 +128,8 @@ button{padding:7px 10px;border:0;border-radius:7px;background:rgba(255,255,255,1
             background-color: #f0f0f0;
             border: 2px solid #ccc;
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -156,8 +156,8 @@ button{padding:7px 10px;border:0;border-radius:7px;background:rgba(255,255,255,1
             background-color: #f0f0f0;
             border: 2px solid #ccc;
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -176,12 +176,12 @@ button{padding:7px 10px;border:0;border-radius:7px;background:rgba(255,255,255,1
 <div id="map"></div>
 <div class="button-container">
         <!-- Primo bottone (con FontAwesome) -->
-        <button class="gps-btn" id="gpsButton" onclick="toggleGps(this)" title="Attiva GPS">
+        <button class="gps-btn" id="gpsButton" onclick="toggleGps(this)" title="Attiva/Disattiva GPS">
             <i class="fa-solid fa-location-crosshairs"></i>
         </button>
 
         <!-- Secondo bottone (con emoji 📍) -->
-        <button class="second-btn" onclick="locate()" title="Localizza">
+        <button class="second-btn" onclick="locate()" title="Centra GPS">
             📍
         </button>
     </div>
