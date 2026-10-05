@@ -720,28 +720,58 @@ function selectPOI(value){
    "Locate" sulla mappa
    ========================================================= */
 
-function toggleGps(button) {
-            button.classList.toggle('active');
-            const isAttivo = button.classList.contains('active');
-
-            if (isAttivo) {
-                console.log("GPS Attivato!");
-            } else {
-                console.log("GPS Disattivato!");
-            }
-        }
-
+let isAttivo=false;
+const btn = document.getElementById('gpsButton');
 let marker = null;
 let accuracy = null;
 let watchId = null;
 let followUser = true;
 let dragHandlerInstalled = false;
+	
+function stopLocate(){
+
+    if(watchId !== null){
+        navigator.geolocation.clearWatch(watchId);
+        watchId = null;
+    }
+
+    if(marker){
+        map.removeLayer(marker);
+        marker = null;
+    }
+
+    if(accuracy){
+        map.removeLayer(accuracy);
+        accuracy = null;
+    }
+
+    followUser = false;
+}
+
+function toggleGps(button) {
+    button.classList.toggle('active');
+    isAttivo = button.classList.contains('active');
+	
+	if (isAttivo){
+		locate();
+            } else {
+		        stopLocate();
+            }
+}
+
+
+
 
 function locate(){
 
     if(!navigator.geolocation){
         return;
     }
+    if(!isAttivo){
+		toggleGps(btn);	
+		return;	
+    }
+	
 
     // Riattiva il centraggio automatico
     followUser = true;
@@ -758,8 +788,7 @@ function locate(){
 
     // Interrompe il precedente watch GPS
     if(watchId !== null){
-        navigator.geolocation.clearWatch(watchId);
-        watchId = null;
+		stopLocate();
     }
 
     watchId = navigator.geolocation.watchPosition(
