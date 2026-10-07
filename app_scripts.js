@@ -755,6 +755,7 @@ function changeGPS() {
 	
 	
 function toggleGps() {	
+	changeGPS();	
 	if (isAttivo){
 		locate();
             } else {
