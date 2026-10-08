@@ -720,7 +720,7 @@ function selectPOI(value){
    "Locate" sulla mappa
    ========================================================= */
 
-let isAttivo=false;
+let isAttivo = false;
 const btn = document.getElementById('gpsButton');
 let marker = null;
 let accuracy = null;
@@ -787,9 +787,10 @@ function locateActivate(){
         dragHandlerInstalled = true;
     }
 
-	
+	console.log(followUser);
     // Interrompe il precedente watch GPS
     if(watchId !== null){
+		console.log(followUser);
 		map.panTo(ll);
 		return;
 	}
