@@ -727,6 +727,7 @@ let accuracy = null;
 let watchId = null;
 let followUser = true;
 let dragHandlerInstalled = false;
+let ll = null;
 	
 function stopLocate(){
 
@@ -789,7 +790,8 @@ function locateActivate(){
 	
     // Interrompe il precedente watch GPS
     if(watchId !== null){
-		stopLocate();
+		map.panTo(ll);
+		return;
 	}
     // Riattiva il centraggio automatico
     followUser = true;
@@ -799,7 +801,7 @@ function locateActivate(){
 
         p => {
 
-            const ll = [
+            ll = [
                 p.coords.latitude,
                 p.coords.longitude
             ];
