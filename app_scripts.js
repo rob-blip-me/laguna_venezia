@@ -787,10 +787,9 @@ function locateActivate(){
         dragHandlerInstalled = true;
     }
 
-	console.log(followUser);
-    // Interrompe il precedente watch GPS
+    // Centra il marker GPS
     if(watchId !== null){
-		console.log(followUser);
+		followUser = true;
 		map.panTo(ll);
 		return;
 	}
