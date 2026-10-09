@@ -8,7 +8,7 @@ L.tileLayer('https://tile.tracestrack.com/topo_it/{z}/{x}/{y}.png?key=af53484a6a
 */
 
 L.tileLayer(
-  "https://api.maptiler.com/maps/streets-v5/{z}/{x}/{y}.png?key=Wv9IR0rzp9NE6slqny23",
+  "https://api.maptiler.com/maps/streets-v2/{z}/{x}/{y}.png?key=Wv9IR0rzp9NE6slqny23",
   {
     tileSize: 512,
     zoomOffset: -1,
