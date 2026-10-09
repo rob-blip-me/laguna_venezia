@@ -1,10 +1,19 @@
 const map=L.map("map").setView([45.43,12.34],12);
-
 L.tileLayer(
+  "https://api.maptiler.com/maps/streets-v4/{z}/{x}/{y}.png?key=Wv9IR0rzp9NE6slqny23",
+  {
+    tileSize: 512,
+    zoomOffset: -1,
+    maxZoom: 19,
+    attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
+  }
+).addTo(map);
+
+/* L.tileLayer(
  "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
  {maxZoom:19,attribution:"© OpenStreetMap contributors"}
 ).addTo(map);
-
+*/
 
 /* L.tileLayer(
   "https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png",
