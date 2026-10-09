@@ -260,12 +260,20 @@ map.on("zoomend moveend",updateBriccole);
    CANALI: mostra solo a zoom > 13.5.
    ========================================================= */
 
-const channelStyle={
+/* const channelStyle={
  color:'#42a5f5',
  weight:1.5,
  opacity:0.5,
  fillColor:'#64b5f6',
  fillOpacity:0.25
+}; */
+
+const channelStyle = {
+  color: '#1e88e5',       // Leggermente più scuro del precedente #42a5f5
+  weight: 1.5,
+  opacity: 0.5,
+  fillColor: '#42a5f5',   // Usiamo il colore precedente per il riempimento, così resta più chiaro
+  fillOpacity: 0.25
 };
 
 const channelHighlight={
