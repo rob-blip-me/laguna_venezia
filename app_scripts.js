@@ -1,13 +1,14 @@
 const map=L.map("map").setView([45.43,12.34],12);
 
+/*
 L.tileLayer('https://tile.tracestrack.com/topo_it/{z}/{x}/{y}.png?key=af53484a6a483448d347f898dff8e4e3', {
     maxZoom: 19,
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://www.tracestrack.com/">Tracestrack</a>'
 }).addTo(map);
+*/
 
-/*
 L.tileLayer(
-  "https://api.maptiler.com/maps/streets-v4/{z}/{x}/{y}.png?key=Wv9IR0rzp9NE6slqny23",
+  "https://api.maptiler.com/maps/streets-v5/{z}/{x}/{y}.png?key=Wv9IR0rzp9NE6slqny23",
   {
     tileSize: 512,
     zoomOffset: -1,
@@ -15,7 +16,7 @@ L.tileLayer(
     attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
   }
 ).addTo(map);
-*/
+
 
 /* L.tileLayer(
  "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
