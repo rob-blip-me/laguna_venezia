@@ -655,7 +655,7 @@ updateLitoranea();
 
 const pointsOfInterest=[
  {name:"Associazione Vela al Terzo",lat:45.438493,lon:12.356660,description:"Sede AVT ai Bacini, Arsenale Nord"},
- {name:"Cason Montiron",lat:45.55355,lon:12.51,description:"Casone abbandonato Laguna Nord"},
+ {name:"Cason Montiron",lat:45.553807,lon:12.509655,description:"Casone abbandonato Laguna Nord"},
  {name:"Casone Millecampi",lat:45.2964,lon:12.19017,description:"Casone Laguna Sud"},
  {name:"Isola Falconera",lat:45.488687,lon:12.543266,description:"Isola delle Litoranee AVT"},
  {name:"L'Isola che non c'\u00e8",lat:45.517806, lon:12.439361,description:"Casone costruito sopra ad una barca"}, 
