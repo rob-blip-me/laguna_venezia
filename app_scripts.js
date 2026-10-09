@@ -1,8 +1,17 @@
 const map=L.map("map").setView([45.43,12.34],12);
 
-L.tileLayer(
+/* L.tileLayer(
  "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
  {maxZoom:19,attribution:"© OpenStreetMap contributors"}
+).addTo(map);
+*/
+
+L.tileLayer(
+  "https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png",
+  {
+    maxZoom: 19,
+    attribution: "© OpenStreetMap contributors"
+  }
 ).addTo(map);
 
 /* =========================================================
