@@ -15,9 +15,9 @@
     </div>
     <p><a href="https://www.maptiler.com/copyright/" target="_blank" rel="noopener">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">&copy; OpenStreetMap contributors</a></p>
     <script>
-      const key = 'Wv9IR0rzp9NE6slqny23';
       const map = L.map('map').setView([49.2125578, 16.62662018], 14); //starting position
-      L.tileLayer(⁠ https://api.maptiler.com/maps/streets-v4/{z}/{x}/{y}.png?key=Wv9IR0rzp9NE6slqny23 ⁠,{ //style URL
+      
+      L.tileLayer('https://api.maptiler.com/maps/streets-v4/{z}/{x}/{y}.png?key=Wv9IR0rzp9NE6slqny23', {
         tileSize: 512,
         zoomOffset: -1,
         minZoom: 1,
