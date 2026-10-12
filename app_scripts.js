@@ -12,13 +12,13 @@ L.tileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png', {
   attribution: '<a href="https://wikimediafoundation.org/wiki/Maps_Terms_of_Use">Wikimedia maps</a> | Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 */
-/* 
+
 // Questo è quello migliore finora, in attesa che si aggiusti l'originale...
 var osmLayer = L.tileLayer('https://tile.tracestrack.com/topo_it/{z}/{x}/{y}.png?key=af53484a6a483448d347f898dff8e4e3', {
     maxZoom: 19,
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://www.tracestrack.com/">Tracestrack</a>'
 });
-*/
+
 
 // Layer Satellitare (es. Esri World Imagery)
 var satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
@@ -26,7 +26,7 @@ var satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/se
     attribution: 'Tiles &copy; Esri &mdash;'
 });
 
-// 5. Aggiungi il controllo dei layer alla mappa (in alto a sinistra)
+
 
 /*
 L.tileLayer(
@@ -40,12 +40,13 @@ L.tileLayer(
 ).addTo(map);
 */
 
+/*
 // Questo è l'originale
 var osmLayer = L.tileLayer(
  "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
  {maxZoom:19,attribution:"© OpenStreetMap contributors"}
 );
-
+*/
 
 
 /* L.tileLayer(
