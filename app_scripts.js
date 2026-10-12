@@ -12,7 +12,8 @@ L.tileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png', {
   attribution: '<a href="https://wikimediafoundation.org/wiki/Maps_Terms_of_Use">Wikimedia maps</a> | Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 */
-/* // Questo è quello migliore finora, in attesa che si aggiusti l'originale...
+/* 
+// Questo è quello migliore finora, in attesa che si aggiusti l'originale...
 var osmLayer = L.tileLayer('https://tile.tracestrack.com/topo_it/{z}/{x}/{y}.png?key=af53484a6a483448d347f898dff8e4e3', {
     maxZoom: 19,
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://www.tracestrack.com/">Tracestrack</a>'
@@ -25,14 +26,7 @@ var satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/se
     attribution: 'Tiles &copy; Esri &mdash;'
 });
 
-var baseMaps = {
-	"StreetMap": osmLayer,
-    "Satellite": satelliteLayer
-    };
-
 // 5. Aggiungi il controllo dei layer alla mappa (in alto a sinistra)
-
-L.control.layers(baseMaps, null, { position: 'bottomleft' }).addTo(map);
 
 /*
 L.tileLayer(
@@ -52,7 +46,7 @@ var omslayer = L.tileLayer(
  {maxZoom:19,attribution:"© OpenStreetMap contributors"}
 );
 
-osmLayer.addTo(map);
+
 
 /* L.tileLayer(
   "https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png",
@@ -62,6 +56,12 @@ osmLayer.addTo(map);
   }
 ).addTo(map);
 */
+osmLayer.addTo(map);
+var baseMaps = {
+	"StreetMap": osmLayer,
+    "Satellite": satelliteLayer
+    };
+L.control.layers(baseMaps, null, { position: 'bottomleft' }).addTo(map);
 
 /* =========================================================
    BATIMETRIA: NUMERI DELLE PROFONDITÀ
