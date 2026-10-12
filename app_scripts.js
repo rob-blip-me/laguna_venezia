@@ -12,12 +12,12 @@ L.tileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png', {
   attribution: '<a href="https://wikimediafoundation.org/wiki/Maps_Terms_of_Use">Wikimedia maps</a> | Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 */
-// Questo è quello migliore finora, in attesa che si aggiusti l'originale...
+/* // Questo è quello migliore finora, in attesa che si aggiusti l'originale...
 var osmLayer = L.tileLayer('https://tile.tracestrack.com/topo_it/{z}/{x}/{y}.png?key=af53484a6a483448d347f898dff8e4e3', {
     maxZoom: 19,
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://www.tracestrack.com/">Tracestrack</a>'
 });
-osmLayer.addTo(map);
+*/
 
 // Layer Satellitare (es. Esri World Imagery)
 var satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
@@ -47,11 +47,12 @@ L.tileLayer(
 */
 
 // Questo è l'originale
-/* L.tileLayer(
+var omslayer = L.tileLayer(
  "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
  {maxZoom:19,attribution:"© OpenStreetMap contributors"}
-).addTo(map);
-*/
+);
+
+osmLayer.addTo(map);
 
 /* L.tileLayer(
   "https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png",
