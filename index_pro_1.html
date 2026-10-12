@@ -25,9 +25,8 @@
     border: 2px solid #ccc;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) !important;
     background-position: 50% 50% !important;
-    
-    /* Scurisce l'icona interna (valori inferiori a 1 la scuriscono) */
-    filter: brightness(0.6); 
+    /* Scurisce l'icona convertendola in toni più scuri senza toccare il background */
+    filter: contrast(150%) brightness(50%);
 }
 
 /* Rende pulito e con angoli arrotondati il pannello quando si apre */
