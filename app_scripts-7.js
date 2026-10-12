@@ -32,7 +32,7 @@ var baseMaps = {
 
 // 5. Aggiungi il controllo dei layer alla mappa (in alto a sinistra)
 
-L.control.layers(baseMaps, null, { position: 'topleft' }).addTo(map);
+L.control.layers(baseMaps, null, { position: 'bottomleft' }).addTo(map);
 
 /*
 L.tileLayer(
