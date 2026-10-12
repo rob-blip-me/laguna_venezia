@@ -7,32 +7,33 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
         #map { height: 500px; width: 100%; }
-/* Rimuove lo sfondo, il bordo e l'ombra dal contenitore principale */
+/* Rimuove completamente bordi, sfondi e box-shadow dal contenitore e dalla barra */
+.leaflet-bar.leaflet-control-layers,
 .leaflet-control-layers {
-    background: transparent;
-    border: none;
-    box-shadow: none;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
-/* Rende il bottone rotondo, di colore grigio chiaro e con un'ombra delicata */
+/* Rende il bottone rotondo, grigio chiaro, senza bordi quadrati */
 .leaflet-control-layers-toggle {
-    border-radius: 50%;
+    border-radius: 50% !important;
     width: 40px;
     height: 40px;
-    background-color: #e0e0e0; /* Grigio chiaro */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    background-position: 50% 50%;
-    border: none;
+    background-color: #e0e0e0 !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) !important;
+    background-position: 50% 50% !important;
+    border: none !important;
 }
 
-/* (Facoltativo) Se vuoi che il pannello con la lista dei layer appaia pulito quando passi il mouse sopra */
+/* Rende pulito e con angoli arrotondati il pannello quando si apre */
 .leaflet-control-layers-expanded {
-    background: #ffffff;
-    padding: 6px 10px;
-    border-radius: 8px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-}
-    </style>
+    background: #ffffff !important;
+    padding: 8px 12px;
+    border-radius: 8px !important;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2) !important;
+    border: 1px solid #ccc !important;
+}    </style>
 </head>
 <body>
 
