@@ -26,7 +26,7 @@ var satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/se
 });
 
 var baseMaps = {
-	"OpenStreetMap": osmLayer,
+	"StreetMap": osmLayer,
     "Satellite": satelliteLayer
     };
 
