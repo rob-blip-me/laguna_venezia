@@ -41,7 +41,7 @@ L.tileLayer(
 */
 
 // Questo è l'originale
-var osmlayer = L.tileLayer(
+var osmLayer = L.tileLayer(
  "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
  {maxZoom:19,attribution:"© OpenStreetMap contributors"}
 );
