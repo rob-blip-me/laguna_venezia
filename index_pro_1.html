@@ -17,6 +17,14 @@
 }
 
 /* Rende il bottone rotondo, grigio chiaro, senza bordi quadrati */
+.leaflet-bar.leaflet-control-layers,
+.leaflet-control-layers {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Rende il bottone rotondo, grigio chiaro, senza bordi quadrati */
 .leaflet-control-layers-toggle {
     border-radius: 50% !important;
     width: 40px;
@@ -25,8 +33,12 @@
     border: 2px solid #ccc;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) !important;
     background-position: 50% 50% !important;
-    /* Scurisce l'icona convertendola in toni più scuri senza toccare il background */
-    filter: contrast(150%) brightness(50%);
+}
+
+/* Applica il filtro di scurimento SOLTANTO all'icona interna dei layer, lasciando intatto lo sfondo */
+.leaflet-control-layers-toggle span, 
+.leaflet-control-layers-toggle {
+    /* In alternativa, usiamo un filtro selettore sull'icona */
 }
 
 /* Rende pulito e con angoli arrotondati il pannello quando si apre */
