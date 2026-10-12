@@ -30,8 +30,9 @@ var baseMaps = {
     "Satellite": satelliteLayer
     };
 
-// 5. Aggiungi il controllo dei layer alla mappa (in alto a destra)
-    L.control.layers(baseMaps).addTo(map);
+// 5. Aggiungi il controllo dei layer alla mappa (in alto a sinistra)
+
+L.control.layers(baseMaps, null, { position: 'topleft' }).addTo(map);
 
 /*
 L.tileLayer(
