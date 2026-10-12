@@ -25,6 +25,14 @@ var satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/se
     attribution: 'Tiles &copy; Esri &mdash;'
 });
 
+var baseMaps = {
+	"OpenStreetMap": osmLayer,
+    "Satellite": satelliteLayer
+    };
+
+// 5. Aggiungi il controllo dei layer alla mappa (in alto a destra)
+    L.control.layers(baseMaps).addTo(map);
+
 /*
 L.tileLayer(
   "https://api.maptiler.com/maps/streets-v2/{z}/{x}/{y}.png?key=Wv9IR0rzp9NE6slqny23",
