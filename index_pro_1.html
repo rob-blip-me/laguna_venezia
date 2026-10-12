@@ -7,20 +7,30 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
         #map { height: 500px; width: 100%; }
-        /* Rende rotondo il bottone di apertura dei layer */
+/* Rimuove lo sfondo, il bordo e l'ombra dal contenitore principale */
+.leaflet-control-layers {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+/* Rende il bottone rotondo, di colore grigio chiaro e con un'ombra delicata */
 .leaflet-control-layers-toggle {
     border-radius: 50%;
     width: 40px;
     height: 40px;
-    background-color: #ffffff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    background-position: 50% 50%; /* Centra l'icona interna */
+    background-color: #e0e0e0; /* Grigio chiaro */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    background-position: 50% 50%;
+    border: none;
 }
 
-/* Facoltativo: arrotonda anche gli angoli del pannello che si apre al passaggio del mouse o al click */
-.leaflet-control-layers {
+/* (Facoltativo) Se vuoi che il pannello con la lista dei layer appaia pulito quando passi il mouse sopra */
+.leaflet-control-layers-expanded {
+    background: #ffffff;
+    padding: 6px 10px;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }
     </style>
 </head>
