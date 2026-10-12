@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Leaflet Mappa con Satellite</title>
+    <!-- Includi il CSS di Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        #map { height: 500px; width: 100%; }
+    </style>
+</head>
+<body>
+
+    <div id="map"></div>
+
+    <!-- Includi il JS di Leaflet -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // 1. Inizializza la mappa
+        var map = L.map('map').setView([41.9028, 12.4964], 6); // Centrata sull'Italia
+
+        // 2. Definisci i singoli layer di tile
+        // Layer OpenStreetMap standard
+        var osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        });
+
+        // Layer Satellitare (es. Esri World Imagery)
+        var satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            maxZoom: 19,
+            attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+        });
+
+        // 3. Aggiungi un layer di default alla mappa (es. OpenStreetMap)
+        osmLayer.addTo(map);
+
+        // 4. Crea un oggetto con i layer di base per il controllo
+        var baseMaps = {
+            "OpenStreetMap": osmLayer,
+            "Satellite": satelliteLayer
+        };
+
+        // 5. Aggiungi il controllo dei layer alla mappa (in alto a destra)
+        L.control.layers(baseMaps).addTo(map);
+    </script>
+
+</body>
+</html>
