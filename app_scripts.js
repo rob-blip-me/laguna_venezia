@@ -123,44 +123,39 @@ map.on("baselayerchange", function(e) {
 });
 */
 
-
 function updateBathymetryLabels(){
- bathymetryLabelLayer.clearLayers();
+  bathymetryLabelLayer.clearLayers();
 
- // Mostra le label soltanto a zoom >= 14.
- if(map.getZoom()<=13.5 || bathymetryPoints.length===0)
-  return;
+  // Mostra le label soltanto a zoom >= 14.
+  if(map.getZoom()<=13.5 || bathymetryPoints.length===0)
+    return;
 
- const bounds=map.getBounds().pad(0.05);
+  const bounds=map.getBounds().pad(0.05);
 
- bathymetryPoints.forEach(pt=>{
-  if(!bounds.contains([pt.lat,pt.lon]))
-   return;
+  bathymetryPoints.forEach(pt=>{
+    if(!bounds.contains([pt.lat,pt.lon]))
+      return;
 
-  const label="−"+pt.depth.toFixed(1);
-if map.hasLayer(satelliteLayer) {
-  L.marker([pt.lat,pt.lon],{
-   icon:L.divIcon({
-    className:"bathymetry-label.satellite",
-    html:label,
-    iconSize:[0,0],
-    iconAnchor:[0,0]
-   }),
-   interactive:false
-  }).addTo(bathymetryLabelLayer);
- }else{  L.marker([pt.lat,pt.lon],{
-   icon:L.divIcon({
-    className:"bathymetry-label.street",
-    html:label,
-    iconSize:[0,0],
-    iconAnchor:[0,0]
-   }),
-   interactive:false
-  }).addTo(bathymetryLabelLayer);	
- });
-}	
+    const label="−"+pt.depth.toFixed(1);
+
+    const style = map.hasLayer(satelliteLayer)
+      ? "bathymetry-label.satellite"
+      : "bathymetry-label.street";
+
+    L.marker([pt.lat,pt.lon],{
+      icon:L.divIcon({
+        className:style,
+        html:label,
+        iconSize:[0,0],
+        iconAnchor:[0,0]
+      }),
+      interactive:false
+    }).addTo(bathymetryLabelLayer);
+  });
+}
 
 map.on("zoomend moveend",updateBathymetryLabels);
+
 
 /* =========================================================
    LONG PRESS: COORDINATE DEL PUNTO TOCCATO/CLICCATO
