@@ -105,7 +105,7 @@ fetch("bathymetry.json")
 function updateBathymetryLabels(){
  bathymetryLabelLayer.clearLayers();
 
- // Leaflet usa livelli interi: zoom > 13.5 equivale a zoom >= 14.
+ // Mostra le label soltanto a zoom >= 14.
  if(map.getZoom()<=13.5 || bathymetryPoints.length===0)
   return;
 
@@ -115,7 +115,7 @@ function updateBathymetryLabels(){
   if(!bounds.contains([pt.lat,pt.lon]))
    return;
 
-  const label=pt.depth.toFixed(1);
+  const label="−"+pt.depth.toFixed(1);
 
   L.marker([pt.lat,pt.lon],{
    icon:L.divIcon({
@@ -127,8 +127,7 @@ function updateBathymetryLabels(){
    interactive:false
   }).addTo(bathymetryLabelLayer);
  });
-}
-
+}	
 
 map.on("zoomend moveend",updateBathymetryLabels);
 
