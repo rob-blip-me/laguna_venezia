@@ -123,6 +123,7 @@ map.on("baselayerchange", function(e) {
 });
 */
 
+
 function updateBathymetryLabels(){
   bathymetryLabelLayer.clearLayers();
 
@@ -153,6 +154,9 @@ function updateBathymetryLabels(){
     }).addTo(bathymetryLabelLayer);
   });
 }
+
+map.on("zoomend moveend",updateBathymetryLabels);
+
 
 map.on("zoomend moveend",updateBathymetryLabels);
 
