@@ -277,7 +277,7 @@ function updateBriccole(){
    radius:2,
    weight:1,
    color:"#555",
-   fillColor:"#BFBFBF", //era 666
+   fillColor:"#B9B9B9", //era 666
    fillOpacity:0.9,
    opacity:0.9,
    interactive:false
