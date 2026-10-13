@@ -75,7 +75,7 @@ const bathymetryLabelLayer=L.layerGroup().addTo(map);
 let bathymetryPoints=[];
 
 const bathymetryIcon=L.divIcon({
- className:"bathymetry-label",
+ className:"bathymetry-label.street",
  html:"",
  iconSize:[0,0],
  iconAnchor:[0,0]
@@ -101,6 +101,27 @@ fetch("bathymetry.json")
  updateBathymetryLabels();
 })
 .catch(e=>console.error("Errore caricamento bathymetry.json:",e));
+
+function updateBathymetryLabelStyle(layer) {
+  const style = layer === satelliteLayer ? "satellite" : "street";
+
+  document.querySelectorAll(".bathymetry-label").forEach(el => {
+    el.classList.remove("street", "satellite");
+    el.classList.add(style);
+  });
+}
+
+// Imposta lo stile iniziale
+updateBathymetryLabelStyle(
+  map.hasLayer(satelliteLayer) ? satelliteLayer : osmLayer
+);
+
+// Aggiorna quando l'utente cambia baselayer
+map.on("baselayerchange", function(e) {
+  updateBathymetryLabelStyle(e.layer);
+});
+
+
 
 function updateBathymetryLabels(){
  bathymetryLabelLayer.clearLayers();
