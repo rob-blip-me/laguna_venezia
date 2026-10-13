@@ -102,6 +102,7 @@ fetch("bathymetry.json")
 })
 .catch(e=>console.error("Errore caricamento bathymetry.json:",e));
 
+/*
 function updateBathymetryLabelStyle(layer) {
   const style = layer === satelliteLayer ? "satellite" : "street";
 
@@ -120,7 +121,7 @@ updateBathymetryLabelStyle(
 map.on("baselayerchange", function(e) {
   updateBathymetryLabelStyle(e.layer);
 });
-
+*/
 
 
 function updateBathymetryLabels(){
@@ -137,16 +138,25 @@ function updateBathymetryLabels(){
    return;
 
   const label="−"+pt.depth.toFixed(1);
-
+if map.hasLayer(satelliteLayer) {
   L.marker([pt.lat,pt.lon],{
    icon:L.divIcon({
-    className:"bathymetry-label",
+    className:"bathymetry-label.satellite",
     html:label,
     iconSize:[0,0],
     iconAnchor:[0,0]
    }),
    interactive:false
   }).addTo(bathymetryLabelLayer);
+ }else{  L.marker([pt.lat,pt.lon],{
+   icon:L.divIcon({
+    className:"bathymetry-label.street",
+    html:label,
+    iconSize:[0,0],
+    iconAnchor:[0,0]
+   }),
+   interactive:false
+  }).addTo(bathymetryLabelLayer);	
  });
 }	
 
