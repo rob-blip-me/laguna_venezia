@@ -155,6 +155,8 @@ function updateBathymetryLabels(){
   });
 }
 
+map.on("baselayerchange", updateBathymetryLabels);
+
 map.on("zoomend moveend",updateBathymetryLabels);
 
 
