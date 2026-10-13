@@ -64,33 +64,7 @@ var baseMaps = {
     };
 L.control.layers(baseMaps, null, { position: 'bottomleft' }).addTo(map);
 
-//Prova
-// 2. Seleziona il contenitore del controllo
-var container = layerControl.getContainer();
 
-// 3. Aggiungi il pulsante di chiusura se non è già presente
-if (!container.querySelector('.leaflet-layers-close-icon')) {
-    var closeBtn = document.createElement('span');
-    closeBtn.innerHTML = '&times;'; // Simbolo della "x"
-    closeBtn.className = 'leaflet-layers-close-icon';
-    
-    // Posizionamento e stile inline di base
-    closeBtn.style.position = 'absolute';
-    closeBtn.style.top = '6px';
-    closeBtn.style.right = '8px';
-    closeBtn.style.cursor = 'pointer';
-    closeBtn.style.fontSize = '18px';
-    closeBtn.style.fontWeight = 'bold';
-    closeBtn.style.color = '#666';
-
-    // Funzione di chiusura al click
-    closeBtn.onclick = function() {
-        layerControl.collapse();
-    };
-
-    container.appendChild(closeBtn);
-}
-//fine prova
 
 /* =========================================================
    BATIMETRIA: NUMERI DELLE PROFONDITÀ
