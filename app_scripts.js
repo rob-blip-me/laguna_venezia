@@ -74,12 +74,13 @@ L.control.layers(baseMaps, null, { position: 'bottomleft' }).addTo(map);
 const bathymetryLabelLayer=L.layerGroup().addTo(map);
 let bathymetryPoints=[];
 
-const bathymetryIcon=L.divIcon({
+/* const bathymetryIcon=L.divIcon({
  className:"bathymetry-label.street",
  html:"",
  iconSize:[0,0],
  iconAnchor:[0,0]
 });
+*/
 
 fetch("bathymetry.json")
 .then(r=>{
@@ -139,9 +140,9 @@ function updateBathymetryLabels(){
 
     const label="−"+pt.depth.toFixed(1);
 
-    const style = map.hasLayer(satelliteLayer)
-      ? "bathymetry-label.satellite"
-      : "bathymetry-label.street";
+const style = map.hasLayer(satelliteLayer)
+  ? "bathymetry-label satellite"
+  : "bathymetry-label street";
 
     L.marker([pt.lat,pt.lon],{
       icon:L.divIcon({
@@ -154,14 +155,7 @@ function updateBathymetryLabels(){
     }).addTo(bathymetryLabelLayer);
   });
 }
-
-map.on("baselayerchange", updateBathymetryLabels);
-
-map.on("zoomend moveend",updateBathymetryLabels);
-
-
-map.on("zoomend moveend",updateBathymetryLabels);
-
+map.on("zoomend moveend baselayerchange",updateBathymetryLabels);
 
 /* =========================================================
    LONG PRESS: COORDINATE DEL PUNTO TOCCATO/CLICCATO
