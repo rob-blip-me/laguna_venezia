@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Leaflet Mappa con Satellite e Batimetria</title>
+    <!-- Includi il CSS di Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        #map { height: 500px; width: 100%; }
+
+        .leaflet-bar.leaflet-control-layers,
+        .leaflet-control-layers {
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+        .leaflet-control-layers-toggle {
+            border-radius: 50% !important;
+            width: 40px;
+            height: 40px;
+            background-color: #f0f0f0;
+            border: 2px solid #ccc;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) !important;
+            background-position: 50% 50% !important;
+        }
+
+        .leaflet-control-layers-expanded {
+            background: #F0F0F0 !important;
+            padding: 8px 12px;
+            border-radius: 8px !important;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2) !important;
+            border: 1px solid #ccc !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="map"></div>
+
+    <!-- Includi il JS di Leaflet -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // 1. Inizializza la mappa centrata sulla Laguna di Venezia
+        var map = L.map("map").setView([45.43, 12.34], 13);
+
+        // 2. Definisci i layer di base
+        var osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        });
+
+        var satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            maxZoom: 19,
+            attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+        });
+
+        // Imposta OpenStreetMap come default
+        osmLayer.addTo(map);
+
+        // 3. Definisci il layer WMS della Batimetria
+        // NOTA: Se http:// dà problemi di CORS/Mixed Content, verifica se il server supporta https:// o va eseguito in locale non protetto
+        var batimetriaWMS = L.tileLayer.wms('https://cigno.atlantedellalaguna.it/geoserver/wms', {
+            layers: 'geonode:lag02_okart_export',
+            format: 'image/png',
+            transparent: true,
+            version: '1.1.0',
+            attribution: 'Dati batimetrici: CNR-ISMAR / Atlante della Laguna'
+        }).addTo(map); // Aggiunto direttamente alla mappa
+
+        // 4. Organizza i layer nei controlli (Base Maps e Overlay Maps)
+        var baseMaps = {
+            "OpenStreetMap": osmLayer,
+            "Satellite": satelliteLayer
+        };
+
+        var overlayMaps = {
+            "Batimetria Laguna": batimetriaWMS
+        };
+
+        // 5. Aggiungi il controllo dei layer in basso a sinistra (gestisce sia basi che overlay)
+        L.control.layers(baseMaps, overlayMaps, { position: 'bottomleft' }).addTo(map);
+    </script>
+
+</body>
+</html>
