@@ -296,8 +296,8 @@ function updateBriccole(){
  const bounds=map.getBounds().pad(0.05);
 
 var fillColorB = map.hasLayer(satelliteLayer)
-  ? "#EEEEEE"
-  : "#666";
+  ? "#FFFFFF"
+  : "#OOO";
 	
  briccolePoints.forEach(pt=>{
   if(!bounds.contains([pt.lat,pt.lon]))
@@ -307,7 +307,7 @@ var fillColorB = map.hasLayer(satelliteLayer)
    renderer:briccoleRenderer,
    radius:2,
    weight:1,
-   color:"#555",
+   color:fillColorB,
    fillColor:fillColorB, //era 666
    fillOpacity:0.9,
    opacity:0.9,
