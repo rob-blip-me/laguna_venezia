@@ -75,22 +75,6 @@ var overlayMaps = {
     "Batimetria Laguna": batimetriaWMS
 };
 L.control.layers(baseMaps, overlayMaps, { position: 'bottomleft' }).addTo(map);
-        var batimetriaWMS = L.tileLayer.wms('https://cigno.atlantedellalaguna.it/geoserver/wms', {
-            layers: 'geonode:lag02_okart_export',
-            format: 'image/png',
-            transparent: true,
-            version: '1.1.0',
-            attribution: 'Dati batimetrici: CNR-ISMAR / Atlante della Laguna'
-        }).addTo(map); // Aggiunto direttamente alla mappa
-
-        // 4. Organizza i layer nei controlli (Base Maps e Overlay Maps)
-        var baseMaps = {
-            "OpenStreetMap": osmLayer,
-            "Satellite": satelliteLayer
-        };
-
-        // 5. Aggiungi il controllo dei layer in basso a sinistra (gestisce sia basi che overlay)
-        L.control.layers(baseMaps, overlayMaps, { position: 'bottomleft' }).addTo(map);
     </script>
 
 </body>
