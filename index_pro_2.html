@@ -60,6 +60,21 @@
 
         // 3. Definisci il layer WMS della Batimetria
         // NOTA: Se http:// dà problemi di CORS/Mixed Content, verifica se il server supporta https:// o va eseguito in locale non protetto
+var batimetriaWMS = L.tileLayer.wms('http://cigno.atlantedellalaguna.it/geoserver/wms', {
+    layers: 'geonode:lag02_okart_export',
+    format: 'image/png',
+    transparent: true,
+    version: '1.1.0', // Prova a metterlo a '1.3.0' se vedi ancora errori
+    crs: L.CRS.EPSG4326, // Forza il sistema di coordinate standard
+    attribution: 'Dati batimetrici: CNR-ISMAR / Atlante della Laguna',
+    maxZoom: 19
+}).addTo(map);
+
+// Aggiungilo anche al controllo dei layer
+var overlayMaps = {
+    "Batimetria Laguna": batimetriaWMS
+};
+L.control.layers(baseMaps, overlayMaps, { position: 'bottomleft' }).addTo(map);
         var batimetriaWMS = L.tileLayer.wms('https://cigno.atlantedellalaguna.it/geoserver/wms', {
             layers: 'geonode:lag02_okart_export',
             format: 'image/png',
@@ -72,10 +87,6 @@
         var baseMaps = {
             "OpenStreetMap": osmLayer,
             "Satellite": satelliteLayer
-        };
-
-        var overlayMaps = {
-            "Batimetria Laguna": batimetriaWMS
         };
 
         // 5. Aggiungi il controllo dei layer in basso a sinistra (gestisce sia basi che overlay)
