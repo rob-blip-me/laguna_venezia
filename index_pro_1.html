@@ -84,6 +84,14 @@
        // Esempio: sposta il bottone in basso a sinistra
 L.control.layers(baseMaps, null, { position: 'bottomleft' }).addTo(map);
         //L.control.layers(baseMaps).addTo(map);
+
+        var batimetriaWMS = L.tileLayer.wms('http://cigno.ve.ismar.cnr.it/geoserver/wms', {
+    layers: 'geonode:lag02_okart_export',
+    format: 'image/png',
+    transparent: true,
+    version: '1.1.0',
+    attribution: 'Dati batimetrici: CNR-ISMAR / CIGNo'
+}).addTo(map);
     </script>
 
 </body>
