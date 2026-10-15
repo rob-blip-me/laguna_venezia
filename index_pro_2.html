@@ -60,7 +60,7 @@
 
         // 3. Definisci il layer WMS della Batimetria
         // NOTA: Se http:// dà problemi di CORS/Mixed Content, verifica se il server supporta https:// o va eseguito in locale non protetto
-var batimetriaWMS = L.tileLayer.wms('http://cigno.atlantedellalaguna.it/geoserver/wms', {
+var batimetriaWMS = L.tileLayer.wms('https://cigno.atlantedellalaguna.it/geoserver/wms', {
     layers: 'geonode:lag02_okart_export',
     format: 'image/png',
     transparent: true,
