@@ -85,12 +85,12 @@
 L.control.layers(baseMaps, null, { position: 'bottomleft' }).addTo(map);
         //L.control.layers(baseMaps).addTo(map);
 
-        var batimetriaWMS = L.tileLayer.wms('http://cigno.ve.ismar.cnr.it/geoserver/wms', {
+var batimetriaWMS = L.tileLayer.wms('http://cigno.atlantedellalaguna.it/geoserver/wms', {
     layers: 'geonode:lag02_okart_export',
     format: 'image/png',
     transparent: true,
     version: '1.1.0',
-    attribution: 'Dati batimetrici: CNR-ISMAR / CIGNo'
+    attribution: 'Dati batimetrici: CNR-ISMAR / Atlante della Laguna'
 }).addTo(map);
     </script>
 
