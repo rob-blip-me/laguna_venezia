@@ -295,6 +295,10 @@ function updateBriccole(){
 
  const bounds=map.getBounds().pad(0.05);
 
+var fillColorB = map.hasLayer(satelliteLayer)
+  ? "#EEEEEE"
+  : "#666";
+	
  briccolePoints.forEach(pt=>{
   if(!bounds.contains([pt.lat,pt.lon]))
    return;
@@ -304,7 +308,7 @@ function updateBriccole(){
    radius:2,
    weight:1,
    color:"#555",
-   fillColor:"#BFBFBF", //era 666
+   fillColor:fillColorB, //era 666
    fillOpacity:0.9,
    opacity:0.9,
    interactive:false
@@ -312,7 +316,7 @@ function updateBriccole(){
  });
 }
 
-map.on("zoomend moveend",updateBriccole);
+map.on("zoomend moveend baselayerchange",updateBriccole);
 
 //const gisUrl="https://arcgis-prd.comune.venezia.it/server/rest/services/URBANISTICA/VPRG_Laguna_e_Isole_Minori_WGS84/MapServer";
 
