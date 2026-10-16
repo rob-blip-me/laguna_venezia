@@ -719,7 +719,7 @@ console.log("Chiuse caricate:",chiuse.length);
 
 }
 
-map.on("zoomend",updateLitoranea);
+map.on("zoomend baselayerchange",updateLitoranea);
 updateLitoranea();
 
 /* =========================================================
