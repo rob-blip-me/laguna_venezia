@@ -62,7 +62,7 @@ var baseMaps = {
 	"StreetMap": osmLayer,
     "Satellite": satelliteLayer
     };
-L.control.layers(baseMaps, null, { position: 'bottomleft' }).addTo(map);
+L.control.layers(baseMaps, null, { position: 'bottomleft', collapsed: false }).addTo(map);
 
 
 
