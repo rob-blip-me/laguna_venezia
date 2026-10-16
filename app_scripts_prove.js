@@ -318,14 +318,6 @@ var fillColorB = map.hasLayer(satelliteLayer)
 
 map.on("zoomend moveend baselayerchange",updateBriccole);
 
-//const gisUrl="https://arcgis-prd.comune.venezia.it/server/rest/services/URBANISTICA/VPRG_Laguna_e_Isole_Minori_WGS84/MapServer";
-
-// Solo i layer GIS necessari: canali e limiti. Niente briccole o batimetria.
-//const laguna=L.esri.dynamicMapLayer({
- //url:gisUrl,
- //opacity:0.75,
- //layers:[28,51]
-//}).addTo(map);
 
 /* =========================================================
    CANALI: mostra solo a zoom > 13.5.
@@ -643,12 +635,22 @@ lon:12.877092,
 /* CHIUSE ================================================ 
 ========================================================== */
 
-const chiuseIcon = L.divIcon({
+let chiuseIcon = null;
+toggle_chiuse_icon();
+
+function toggle_chiuse_icon(){
+  let htmlstring = map.hasLayer(satelliteLayer)
+  ? '<img src="chiuse_light.png" alt="Chiusa" style="width:90%; height:90%; display:block;" />'
+  : '<img src="chiuse.png" alt="Chiusa" style="width:90%; height:90%; display:block;" />';
+  chiuseIcon = L.divIcon({
   className: "chiuse-icon",
-  html: '<img src="chiuse.png" alt="Chiusa" style="width:90%; height:90%; display:block;" />',
+  html: htmlstring, 
   iconSize: [36, 36],
   iconAnchor: [18, 18]
 });
+}
+map.on("baselayerchange",toggle_chiuse_icon);
+
 
 // Chiusa inserita direttamente nel codice
 const chiuse=[
