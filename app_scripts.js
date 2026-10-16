@@ -649,8 +649,6 @@ function toggle_chiuse_icon(){
   iconAnchor: [18, 18]
 });
 }
-map.on("baselayerchange",toggle_chiuse_icon);
-
 
 // Chiusa inserita direttamente nel codice
 const chiuse=[
@@ -678,6 +676,7 @@ lon:13.068651,
 
 function updateLitoranea(){
 litoraneaLayer.clearLayers();
+toggle_chiuse_icon();
 if(map.getZoom()<=13) {
   return;
 }
