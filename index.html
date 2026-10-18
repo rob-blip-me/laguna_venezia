@@ -170,14 +170,15 @@ button{padding:7px 10px;border:0;border-radius:7px;background:rgba(255,255,255,1
             background-color: #e4e4e4;
         }    
 
-/* Rende il bottone rotondo, grigio chiaro, senza bordi quadrati */
+/* Aspetto del contenitore Leaflet */
 .leaflet-bar.leaflet-control-layers,
 .leaflet-control-layers {
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
 }
-    /* Posiziona il selettore dei layer a destra dei pulsanti GPS */
+
+/* Posizione del selettore dei layer */
 .leaflet-top.leaflet-left .leaflet-control-layers {
     position: absolute;
     left: 8px;
@@ -185,26 +186,17 @@ button{padding:7px 10px;border:0;border-radius:7px;background:rgba(255,255,255,1
     margin: 0 !important;
 }
 
-/* Rende il bottone rotondo, grigio chiaro, senza bordi quadrati 
+/* Pulsante circolare dei layer */
 .leaflet-control-layers-toggle {
-    border-radius: 50% !important;
-    width: 20px;
-    height: 20px;
-    background-color: #f0f0f0;
-    border: 2px solid #ccc;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) !important;
-    background-position: 50% 50% !important;
-    /* filter: contrast(150%) brightness(50%); */
-}*/
-    .leaflet-control-layers-toggle {
     display: block !important;
     width: 40px !important;
     height: 40px !important;
     box-sizing: border-box !important;
 
-    border-radius: 50% !important;
     background-color: #f0f0f0 !important;
     border: 3px solid #aaa !important;
+    border-radius: 50% !important;
+
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) !important;
 
     background-position: center !important;
@@ -212,9 +204,9 @@ button{padding:7px 10px;border:0;border-radius:7px;background:rgba(255,255,255,1
     background-size: 24px 24px !important;
 }
 
-/*  Rende pulito e con angoli arrotondati il pannello quando si apre */
+/* Pannello aperto */
 .leaflet-control-layers-expanded {
-    background: #F0F0F0 !important;
+    background: #f0f0f0 !important;
     padding: 8px 12px;
     border-radius: 8px !important;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2) !important;
@@ -289,7 +281,7 @@ button{padding:7px 10px;border:0;border-radius:7px;background:rgba(255,255,255,1
   
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/esri-leaflet@3.0.16/dist/esri-leaflet.js"></script>
-<script src="app_scripts.js?v=1.0"></script>
+<script src="app_scripts.js?v=1.1"></script>
 
 
 </body>
