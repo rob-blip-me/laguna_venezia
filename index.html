@@ -213,6 +213,30 @@ button{padding:7px 10px;border:0;border-radius:7px;background:rgba(255,255,255,1
     border: 1px solid #ccc !important;
 }
 
+/* Quando il pannello è aperto, nasconde il pulsante circolare */
+.leaflet-control-layers-expanded .leaflet-control-layers-toggle {
+    display: none !important;
+}
+
+/* Allarga il pannello e impedisce che le etichette vadano a capo */
+.leaflet-control-layers-expanded {
+    width: 170px !important;
+    box-sizing: border-box !important;
+    white-space: nowrap !important;
+}
+
+/* Mantiene selettori e nomi sulla stessa riga */
+.leaflet-control-layers-list label {
+    display: flex !important;
+    align-items: center;
+    white-space: nowrap !important;
+    gap: 6px;
+}
+
+.leaflet-control-layers-list label span {
+    white-space: nowrap !important;
+}
+
 .bathymetry-label.street {
   color: #101010;
   font-size: 11px;
@@ -281,7 +305,7 @@ button{padding:7px 10px;border:0;border-radius:7px;background:rgba(255,255,255,1
   
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/esri-leaflet@3.0.16/dist/esri-leaflet.js"></script>
-<script src="app_scripts.js?v=1.0"></script>
+<script src="app_scripts.js?v=1.1"></script>
 
 
 </body>
